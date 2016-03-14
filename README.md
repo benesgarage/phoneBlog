@@ -1,2 +1,0 @@
-# phoneBlog
-KitMaker Exercise
