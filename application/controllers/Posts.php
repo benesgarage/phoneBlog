@@ -54,7 +54,15 @@ class Posts extends CI_Controller{
         else
         {
             $this->post_model->set_post();
-            $this->load->view('posts/success');
+            $this->load->helper('url');
+            $data = array(
+                'slug' => url_title($this->input->post('title'), 'dash', TRUE)
+            );
+            $this->load->view('posts/success', $data);
         }
+    }
+
+    public function success($slug = NULL){
+
     }
 }
