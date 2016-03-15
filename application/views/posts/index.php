@@ -6,6 +6,6 @@
     <div class="main">
         <?php echo $post_item['body']; ?>
     </div>
-    <p><a href="<?php echo site_url('posts/'.$news_item['slug']); ?>">View article</a></p>
+    <p><a href="<?php echo site_url('posts/'.$post_item['slug']); ?>">View article</a></p>
 
 <?php endforeach; ?>

@@ -6,6 +6,7 @@ class Posts extends CI_Controller{
         parent::__construct();
         $this->load->model('post_model');
         $this->load->helper('url_helper');
+        $this->output->set_template('default');
     }
 
     public function index(){
@@ -19,7 +20,7 @@ class Posts extends CI_Controller{
 
     public function view($slug = NULL)
     {
-        $data['news_item'] = $this->post_model->get_post($slug);
+        $data['post_item'] = $this->post_model->get_post($slug);
 
         if (empty($data['post_item']))
         {
@@ -29,7 +30,7 @@ class Posts extends CI_Controller{
         $data['title'] = $data['post_item']['title'];
 
         $this->load->view('templates/header', $data);
-        $this->load->view('post/view', $data);
+        $this->load->view('posts/view', $data);
         $this->load->view('templates/footer');
     }
 
