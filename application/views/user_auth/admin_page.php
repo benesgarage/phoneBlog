@@ -25,6 +25,7 @@ if (isset($this->session->userdata['logged_in'])) {
     echo "Your Email is " . $email;
     echo "<br/>";
     ?>
+    <?php echo (implode(",",$_SESSION['logged_in'])); var_dump($_SESSION);?>
     <b id="logout"><a href="logout">Logout</a></b>
 </div>
 <br/>

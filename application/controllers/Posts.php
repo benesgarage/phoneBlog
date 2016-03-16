@@ -6,11 +6,13 @@ class Posts extends CI_Controller{
         parent::__construct();
         $this->load->model('post_model');
         $this->load->helper('url_helper');
+        $this->load->library('session');
         $this->output->set_template('default');
     }
 
     public function index(){
         $data['post'] = $this->post_model->get_post();
+        $data['user'] = $this->post_model->get_user();
         $data['title'] = 'Post archive';
 
         $this->load->view('templates/header', $data);

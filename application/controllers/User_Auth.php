@@ -14,11 +14,15 @@ Class User_Auth extends CI_Controller
         $this->load->library('session');
 
         $this->load->model('user_auth/login_database');
+
+        $this->output->set_template('default');
     }
 
     public function index()
     {
+        $this->load->view('templates/header');
         $this->load->view('user_auth/login_form');
+        $this->load->view('templates/footer');
     }
 
     public function user_registration_show()
@@ -36,10 +40,12 @@ Class User_Auth extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('user_auth/registration_form');
         } else {
+            $default_role = 3;
             $data = array(
                 'user_name' => $this->input->post('username'),
                 'user_email' => $this->input->post('email_value'),
-                'user_password' => $this->input->post('password')
+                'user_password' => $this->input->post('password'),
+                'id_role' => $default_role
             );
             $result = $this->login_database->registration_insert($data);
             if ($result == TRUE) {
@@ -58,7 +64,7 @@ Class User_Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
-            if(isset($this->session->userdata['logged_in'])){
+            if(isset($_SESSION['logged_in'])){
                 $this->load->view('user_auth/admin_page');
             }else{
                 $this->load->view('user_auth/login_form');
@@ -79,7 +85,7 @@ Class User_Auth extends CI_Controller
                         'email' => $result[0]->user_email,
                     );
 
-                    $this->session->set_userdata('logged_in', $session_data);
+                    $_SESSION['logged_in'] = $session_data;
                     /**$this->load->view('user_auth/admin_page');*/
                     redirect('/posts/', 'refresh');
                 }
@@ -94,10 +100,8 @@ Class User_Auth extends CI_Controller
 
     public function logout() {
 
-        $sess_array = array(
-            'username' => ''
-        );
-        $this->session->unset_userdata('logged_in', $sess_array);
+
+        unset($_SESSION['logged_in']);
         $data['message_display'] = 'Successfully Logout';
         $this->load->view('user_auth/login_form', $data);
     }

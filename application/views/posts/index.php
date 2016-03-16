@@ -14,8 +14,21 @@
             <tr>
                 <td><?php echo $post_item['title'];?></td>
                 <td><?php echo $post_item['body'];?></td>
+                <td><?php echo $post_item['datetime'];?></td>
+                <td><?php
+            foreach ($user as $user_solo):
+                if ($user_solo['id_user'] == $post_item['id_user']){
+                    echo $user_solo['user_name'];
+                }
+                    endforeach;?></td>
+                <td>Swaggy Phone</td>
                 <td><a href="<?php echo site_url('posts/'.$post_item['slug']); ?>">View post</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php var_dump($post)?>
+<br>
+<br>
+<br>
+<?php var_dump($user)?>
