@@ -5,6 +5,7 @@
 		<meta name="robots" content="all, index, follow"/>
 		<meta name="googlebot" content="all, index, follow" />
 		<script src="/phoneBlog/assets/js/jquery-1.12.1.min.js"></script>
+		<script src="/phoneBlog/assets/js/jquery.dataTables.min.js"></script>
 		<script src="/phoneBlog/assets/js/basic_funcs.js"></script>
 	<?php
 	/** -- Copy from here -- */
@@ -34,6 +35,11 @@
 	} echo "\n\t";
 
 	/** -- to here -- */
+	if (isset($this->session->userdata['logged_in'])) {
+		$username = ($this->session->userdata['logged_in']['username']);
+		$email = ($this->session->userdata['logged_in']['email']);
+	} else {
+	}
 ?>
 
     <!-- Le styles -->
@@ -41,6 +47,7 @@
     <link href="<?php echo base_url(); ?>assets/themes/default/hero_files/bootstrap-responsive.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/themes/default/css/general.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/themes/default/css/custom.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -128,8 +135,8 @@
             <ul class="nav">
               <li id="home"><a href="<?php echo site_url('posts'); ?>">Home</a></li>
 			  <li id="create_post"><a href="<?php echo site_url('posts/create'); ?>">Create a post</a></li>
-              <li><a href="<?php echo site_url('example/example_2'); ?>">Example 2</a></li>
-              <li><a href="<?php echo site_url('example/example_3'); ?>">Example 3</a></li>
+              <li><a href="<?php echo site_url('user_auth/user_login_process'); ?>">LOG IN</a></li>
+              <li><a href="<?php echo site_url('user_auth/user_registration_show'); ?>">REGISTER</a></li>
               <li><a href="<?php echo site_url('example/example_4'); ?>">Example 4</a></li>
             </ul>
           </div><!--/.nav-collapse -->
