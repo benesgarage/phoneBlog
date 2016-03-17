@@ -1,0 +1,7 @@
+
+1 - Run the SQL script (kitmaker_posts.sql) on the server. This will create the 
+necesary database tables and default values for the page's basic functionality.
+
+2 - Root directory defaults to phoneBlog, and in CodeIgniter we have specified 
+the base URL to be http://localhost:8012/phoneBlog/. If your base URL differs 
+please change it in application/config/config.php.
