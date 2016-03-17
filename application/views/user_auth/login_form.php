@@ -2,14 +2,6 @@
 <?php
 if (isset($this->session->userdata['logged_in'])) {
 }
-?>
-<head>
-    <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/views/user_auth/css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<?php
 if (isset($logout_message)) {
     echo "<div class='message'>";
     echo $logout_message;
@@ -25,7 +17,7 @@ if (isset($message_display)) {
 ?>
 <div id="main">
     <div id="login">
-        <h2>Login Form</h2>
+        <h2>Login</h2>
         <hr/>
         <?php echo form_open('user_auth/user_login_process'); ?>
         <?php
@@ -41,9 +33,7 @@ if (isset($message_display)) {
         <label>Password :</label>
         <input type="password" name="password" id="password" placeholder="**********"/><br/><br />
         <input type="submit" value=" Login " name="submit"/><br />
-        <a href="<?php echo base_url() ?>user_auth/user_registration_show">To SignUp Click Here</a>
+        <a href="<?php echo base_url() ?>user_auth/user_registration_show">Don't have an account? Sign up here.</a>
         <?php echo form_close(); ?>
     </div>
 </div>
-</body>
-</html>

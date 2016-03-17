@@ -4,9 +4,9 @@
 		<meta name="resource-type" content="document" />
 		<meta name="robots" content="all, index, follow"/>
 		<meta name="googlebot" content="all, index, follow" />
-		<script src="/phoneBlog/assets/js/jquery-1.12.1.min.js"></script>
-		<script src="/phoneBlog/assets/js/jquery.dataTables.min.js"></script>
-		<script src="/phoneBlog/assets/js/basic_funcs.js"></script>
+		<script src="<?php echo base_url(); ?>assets/js/jquery-1.12.1.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/js/basic_funcs.js"></script>
 	<?php
 	/** -- Copy from here -- */
 	if(!empty($meta))
@@ -48,6 +48,8 @@
     <link href="<?php echo base_url(); ?>assets/themes/default/css/general.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/themes/default/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -55,9 +57,7 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.png" type="image/x-icon"/>
-	<meta property="og:image" content="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png"/>
-	<link rel="image_src" href="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png" />
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets//images/favicon.png" type="image/x-icon"/>
 	<style type="text/css">
 
 	::selection{ background-color: #E13300; color: white; }
@@ -130,14 +130,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <img src="<?php echo base_url(); ?>assets/themes/default/images/kitmaker_logo.png" style="float:left;margin-top:5px;padding-right:5px;z-index:5" alt="logo"/>
+          <img src="<?php echo base_url(); ?>assets/images/kitmaker_logo.png" style="float:left;margin-top:5px;padding-right:5px;z-index:5" alt="logo"/>
           <div style="height: 0px;" class="nav-collapse collapse">
             <ul class="nav">
-              <li id="home"><a href="<?php echo site_url('posts'); ?>">Home</a></li>
-			  <li id="create_post"><a href="<?php echo site_url('posts/create'); ?>">Create a post</a></li>
-              <li><a href="<?php echo site_url('user_auth/user_login_process'); ?>">LOG IN</a></li>
-              <li><a href="<?php echo site_url('user_auth/user_registration_show'); ?>">REGISTER</a></li>
-              <li><a href="<?php echo site_url('example/example_4'); ?>">Example 4</a></li>
+              <li id="home"><a href="<?php echo site_url('posts'); ?>">HOME</a></li>
+			  <li id="create_post"><a href="<?php echo site_url('posts/create'); ?>">POST SOMETHING</a></li>
+				<?php
+				if (isset($_SESSION['logged_in'])){
+					echo "<li><a href=\"". site_url('user_auth/logout')."\">LOG OUT</a></li>
+					<li><a href=\"". site_url('user_auth/admin_page')."\">PROFILE</a></li>";
+				}else{
+					echo "<li><a href=\"".site_url('user_auth/user_login_process')."\">LOG IN</a></li>
+              <li><a href=\"". site_url('user_auth/user_registration_show')."\">REGISTER</a></li>";
+				}
+				?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -157,7 +163,7 @@
       <footer>
       	<div class="row">
 	        <div class="span6 b10">
-				Copyright &copy; > |
+				Copyright &copy; | Kai Karl Benevento
 	        </div>
         </div>
       </footer>

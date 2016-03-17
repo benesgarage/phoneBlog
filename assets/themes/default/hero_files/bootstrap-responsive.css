@@ -813,3 +813,55 @@
     overflow: visible !important;
   }
 }
+
+@media (max-width: 1199px){
+  #device_model{
+    right: -215px;
+    width: 15%;
+    float: right;
+  }
+}
+
+@media (max-width: 979px){
+  #device_brand{
+    position: relative;
+    left: 82px;
+    width: 178px;
+    float: right;
+  }
+  #device_model{
+    position: relative;
+    right: -260px;
+    width: 178px;
+    float: right;
+  }
+}
+
+@media (max-width: 768px) {
+  #device_brand{
+    position: relative;
+    left: 82px;
+    width: 178px;
+    float: right;
+  }
+  #device_model{
+    position: relative;
+    margin-top: 15px;
+    right: -260px;
+    width: 178px;
+    float: right;
+  }
+}
+
+@media (max-width: 725px){
+  #device_brand{
+    display: none;
+  }
+  #device_model{
+    display: none;
+  }
+  #device{
+    right: 0px;
+  }
+}
+

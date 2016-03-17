@@ -39,10 +39,10 @@ class Post_model extends CI_Model{
                 $user = $query_data['id_user'];
             }
             else{
-
+                die('No record of logged user within the database.');
             }
         }else {
-            $user = 2;
+            $user = 1;
         }
         $slug = url_title($this->input->post('title'), 'dash', TRUE);
 
@@ -53,7 +53,8 @@ class Post_model extends CI_Model{
             'body' => $this->input->post('body'),
             'slug' => $slug,
             'datetime' => $current_date,
-            'id_user' => $user
+            'id_user' => $user,
+            'device' => $_SESSION['brand_name']." ".$_SESSION['model_name']
         );
 
         return $this->db->insert('post', $data);

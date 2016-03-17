@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__.'/../../assets/php/MyWurfl.php';
 class Posts extends CI_Controller{
 
     public function __construct()
@@ -14,7 +16,6 @@ class Posts extends CI_Controller{
         $data['post'] = $this->post_model->get_post();
         $data['user'] = $this->post_model->get_user();
         $data['title'] = 'Post archive';
-
         $this->load->view('templates/header', $data);
         $this->load->view('posts/index', $data);
         $this->load->view('templates/footer');

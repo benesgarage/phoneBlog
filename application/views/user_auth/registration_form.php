@@ -4,15 +4,9 @@ if (isset($this->session->userdata['logged_in'])) {
     header("location: http://localhost/login/index.php/user_authentication/user_login_process");
 }
 ?>
-<head>
-    <title>Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/views/user_auth/css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
-</head>
-<body>
 <div id="main">
     <div id="login">
-        <h2>Registration Form</h2>
+        <h2>Registration</h2>
         <hr/>
         <?php
         echo "<div class='error_msg'>";
@@ -46,8 +40,6 @@ if (isset($this->session->userdata['logged_in'])) {
         echo form_submit('submit', 'Sign Up');
         echo form_close();
         ?>
-        <a href="<?php echo base_url() ?>user_auth/user_login_process">For Login Click Here</a>
+        <a href="<?php echo base_url() ?>user_auth/user_login_process">Already registered? Log in here.</a>
     </div>
 </div>
-</body>
-</html>

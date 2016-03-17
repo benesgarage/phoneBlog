@@ -1,0 +1,90 @@
+#main{
+    width:960px;
+    margin:50px auto;
+    font-family:raleway;
+}
+
+span{
+    color:red;
+}
+
+label{
+    font-family: raleway;
+}
+
+h2{ font-family: raleway;
+    text-align:center;
+    border-radius: 10px 10px 0 0;
+    margin: -10px -40px;
+    padding: 30px;
+}
+
+#login{
+    position: relative;
+    width:600px;
+    left:17%;
+    font-family:raleway;
+    margin-top: 70px;
+}
+
+input[type=text],input[type=password], input[type=email], input[type=input], textarea{
+    width:99.5%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    font-size: 16px;
+    font-family:raleway;
+}
+
+textarea{
+    height:25%;
+}
+
+input[type=submit]{
+    width: 100%;
+    background-color:#EF66FE;
+    color: white;
+    padding: 10px;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom: 15px;
+}
+
+#profile{
+    padding:50px;
+    border:1px dashed grey;
+    font-size:20px;
+    background-color:#DCE6F7;
+}
+
+#logout{
+    float:right;
+    padding:5px;
+    border:dashed 1px gray;
+    margin-top: -168px;
+}
+
+a{
+    text-decoration:none;
+    color: cornflowerblue;
+}
+
+i{
+    color: cornflowerblue;
+}
+
+.error_msg{
+    color:red;
+    font-size: 16px;font-family: raleway;
+}
+
+.message{
+    position: absolute;
+    font-weight: bold;
+    font-size: 28px;
+    color: #6495ED;
+    left: 262px;
+    width: 500px;
+    text-align: center;
+}

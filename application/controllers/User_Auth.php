@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__.'/../../assets/php/MyWurfl.php';
 Class User_Auth extends CI_Controller
 {
     public function __construct()
@@ -27,7 +29,10 @@ Class User_Auth extends CI_Controller
 
     public function user_registration_show()
     {
+
+        $this->load->view('templates/header');
         $this->load->view('user_auth/registration_form');
+        $this->load->view('templates/footer');
     }
 
     public function new_user_registration()
@@ -38,7 +43,9 @@ Class User_Auth extends CI_Controller
         $this->form_validation->set_rules('email_value', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header');
             $this->load->view('user_auth/registration_form');
+            $this->load->view('templates/footer');
         } else {
             $default_role = 3;
             $data = array(
@@ -67,7 +74,10 @@ Class User_Auth extends CI_Controller
             if(isset($_SESSION['logged_in'])){
                 $this->load->view('user_auth/admin_page');
             }else{
+
+                $this->load->view('templates/header');
                 $this->load->view('user_auth/login_form');
+                $this->load->view('templates/footer');
             }
         } else {
             $data = array(
@@ -98,8 +108,11 @@ Class User_Auth extends CI_Controller
         }
     }
 
-    public function logout() {
+    public function admin_page(){
+        $this->load->view("user_auth/admin_page");
+    }
 
+    public function logout() {
 
         unset($_SESSION['logged_in']);
         $data['message_display'] = 'Successfully Logout';

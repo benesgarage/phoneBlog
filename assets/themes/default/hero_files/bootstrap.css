@@ -3771,6 +3771,7 @@ input[type="submit"].btn.btn-mini {
   display: block;
   float: left;
   margin: 0 10px 0 0;
+  width: 80%;
 }
 
 .navbar .nav.pull-right {
@@ -3780,6 +3781,12 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li {
   display: block;
   float: left;
+}
+
+.navbar .nav > li:nth-child(3),
+.navbar .nav > li:nth-child(4){
+  display: block;
+  float: right;
 }
 
 .navbar .nav > li > a {
@@ -4963,3 +4970,27 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+#device_brand{
+  text-align: left;
+  position: relative;;
+  margin-top: 0;
+  left: 75px;
+  width: 15%;
+  float: right;
+}
+#device_model{
+  text-align: left;
+  position: relative;;
+  margin-top: 1.75%;
+  right: -251px;
+  width: 15%;
+  float: right;
+}
+#device{
+  position: relative;
+  margin-top: 0;
+  width: 35px;
+  right: 140px;
+  float: right;
+}
+
