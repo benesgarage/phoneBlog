@@ -24,7 +24,7 @@
                 }
                     endforeach;?></td>
                 <td><?php echo $post_item['device']?></td>
-                <td><a href="<?php echo site_url('posts/'.$post_item['slug']); ?>">View post</a></td>
+                <td><a href="<?php echo site_url('posts/'.$post_item['slug'].'_'.$post_item['id_post']); ?>">View post</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

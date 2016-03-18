@@ -138,10 +138,10 @@
 				<?php
 				if (isset($_SESSION['logged_in'])){
 					echo "<li><a href=\"". site_url('user_auth/logout')."\">LOG OUT</a></li>
-					<li><a href=\"". site_url('user_auth/admin_page')."\">PROFILE</a></li>";
+					<li id='profile_button'><a href=\"". site_url('user_auth/admin_page')."\">PROFILE</a></li>";
 				}else{
-					echo "<li><a href=\"".site_url('user_auth/user_login_process')."\">LOG IN</a></li>
-              <li><a href=\"". site_url('user_auth/user_registration_show')."\">REGISTER</a></li>";
+					echo "<li id='login_button'><a href=\"".site_url('user_auth/user_login_process')."\">LOG IN</a></li>
+              <li id='register'><a href=\"". site_url('user_auth/user_registration_show')."\">REGISTER</a></li>";
 				}
 				?>
             </ul>

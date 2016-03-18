@@ -1,4 +1,3 @@
-<html>
 <?php
 if (isset($this->session->userdata['logged_in'])) {
     $username = ($this->session->userdata['logged_in']['username']);
@@ -6,28 +5,19 @@ if (isset($this->session->userdata['logged_in'])) {
 } else {
 }
 ?>
-<head>
-    <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>application/views/user_auth/css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
-</head>
-<body>
 <div id="profile">
     <?php
-    echo "Hello <b id='welcome'><i>" . $username . "</i> !</b>";
+    echo "<b id='welcome'><i>" . $_SESSION['logged_in']['username'] ."</i></b>";
     echo "<br/>";
     echo "<br/>";
-    echo "Welcome to Admin Page";
+    echo "<p>Welcome to your basic profile page</p>";
     echo "<br/>";
     echo "<br/>";
-    echo "Your Username is " . $username;
+    echo "<p>Your Username is " . $_SESSION['logged_in']['username']."</p>";
     echo "<br/>";
-    echo "Your Email is " . $email;
+    echo "<p>Your Email is " . $_SESSION['logged_in']['email']."</p>";
     echo "<br/>";
+    echo "<p>You our navigating our page via " .$_SESSION['brand_name']." ".$_SESSION['model_name']."</p>";
     ?>
-    <?php echo (implode(",",$_SESSION['logged_in'])); var_dump($_SESSION);?>
-    <b id="logout"><a href="logout">Logout</a></b>
 </div>
 <br/>
-</body>
-</html>

@@ -61,7 +61,9 @@ class Posts extends CI_Controller{
             $data = array(
                 'slug' => url_title($this->input->post('title'), 'dash', TRUE)
             );
+            $this->load->view('templates/header');
             $this->load->view('posts/success', $data);
+            $this->load->view('templates/footer');
         }
     }
 

@@ -57,7 +57,9 @@ Class User_Auth extends CI_Controller
             $result = $this->login_database->registration_insert($data);
             if ($result == TRUE) {
                 $data['message_display'] = 'Registered Successfully!';
+                $this->load->view('templates/header');
                 $this->load->view('user_auth/login_form', $data);
+                $this->load->view('templates/footer');
             } else {
                 $data['message_display'] = 'User already exists!';
                 $this->load->view('user_auth/registration_form', $data);
@@ -109,13 +111,17 @@ Class User_Auth extends CI_Controller
     }
 
     public function admin_page(){
+        $this->load->view("templates/header");
         $this->load->view("user_auth/admin_page");
+        $this->load->view("templates/footer");
     }
 
     public function logout() {
 
         unset($_SESSION['logged_in']);
-        $data['message_display'] = 'Successfully Logout';
+        $data['message_display'] = 'Logged out';
+        $this->load->view('templates/header');
         $this->load->view('user_auth/login_form', $data);
+        $this->load->view('templates/footer');
     }
 }

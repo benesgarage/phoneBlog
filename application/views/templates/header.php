@@ -5,13 +5,11 @@
     </head>
     <body>
     <?php
-    if (!isset($_SESSION["brand_name"]) or !isset($_SESSION['model_name'])){
         $_SESSION["brand_name"] = MyWurfl::get('brand_name');
         if($_SESSION["brand_name"] == "generic web browser"){
             $_SESSION["brand_name"] = MyWurfl::get('advertised_browser');
         }
         $_SESSION["model_name"] = MyWurfl::get('model_name');
-    }
     ?>
         <h1>Hi <?php if(isset($_SESSION['logged_in'])){
                 echo $_SESSION['logged_in']['username'];

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2016 at 04:50 PM
+-- Generation Time: Mar 18, 2016 at 11:13 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -42,7 +42,7 @@ CREATE TABLE `permission` (
 CREATE TABLE `post` (
   `id_post` int(11) NOT NULL,
   `title` varchar(45) NOT NULL,
-  `body` varchar(300) NOT NULL,
+  `body` varchar(5000) NOT NULL,
   `datetime` datetime NOT NULL,
   `slug` varchar(100) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -54,10 +54,12 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`) VALUES
-(1, 'blah', 'bbadhjasbdkl', '2016-03-17 13:23:29', 'blah', 3, NULL),
-(2, 'asdasdas', 'aeswdqw', '2016-03-17 13:25:43', 'asdasdas', 3, 'generic web browser '),
-(3, 'sdasdqwa', 'ddqwdqw', '2016-03-17 13:27:04', 'sdasdqwa', 3, 'generic web browser '),
-(4, 'fhndfoihjd', 'rhewuirwhui', '2016-03-17 13:35:52', 'fhndfoihjd', 1, 'Samsung SM-G900P');
+(26, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:56:39', 'lorem-ipsum', 1, 'Chrome '),
+(27, 'Good Day', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:56:57', 'good-day', 1, 'Chrome '),
+(28, 'On my phone', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:57:43', 'on-my-phone', 1, 'Samsung SM-G900P'),
+(29, 'Hi guys, its benes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:59:31', 'hi-guys-its-benes', 7, 'Apple iPhone'),
+(30, 'Damn I love posting', 'Etc this is a shorter parragraph.', '2016-03-18 11:00:04', 'damn-i-love-posting', 7, 'Apple iPhone'),
+(31, 'Lorem Ipsum', 'As you can see, to avoid getting the wrong post due to the same title as the slug of the URL, I have included the post ID as a suffix within the URL, thus avoiding the problem.', '2016-03-18 11:01:37', 'lorem-ipsum', 7, 'Apple iPhone');
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_email`, `id_role`) VALUES
 (1, 'Anonymous', 'anonymous', 'anon@anon', 2),
-(3, 'benes', 'benes', 'benes@benes', 3);
+(7, 'benes', 'benes', 'kkarl@kitmaker.com', 3);
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,7 @@ ALTER TABLE `permission`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `role`
 --
@@ -192,7 +194,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

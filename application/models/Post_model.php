@@ -12,8 +12,10 @@ class Post_model extends CI_Model{
             $query = $this->db->get('post');
             return $query->result_array();
         }
-
-        $query = $this->db->get_where('post',array('slug' => $slug));
+        $id_pos = strpos($slug, '_');
+        $id_post = substr($slug, $id_pos+1);
+        $slug = substr($slug,0,$id_pos);
+        $query = $this->db->get_where('post',array('slug' => $slug, 'id_post' => $id_post));
         return $query->row_array();
     }
 
@@ -44,6 +46,7 @@ class Post_model extends CI_Model{
         }else {
             $user = 1;
         }
+
         $slug = url_title($this->input->post('title'), 'dash', TRUE);
 
         $current_date = date('Y-m-d H:i:s', time());

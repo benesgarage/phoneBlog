@@ -1,6 +1,6 @@
 #main{
-    width:960px;
-    margin:50px auto;
+    width:85%;
+    margin:1% auto;
     font-family:raleway;
 }
 
@@ -21,7 +21,7 @@ h2{ font-family: raleway;
 
 #login{
     position: relative;
-    width:600px;
+    width:60%;
     left:17%;
     font-family:raleway;
     margin-top: 70px;
@@ -52,10 +52,10 @@ input[type=submit]{
 }
 
 #profile{
-    padding:50px;
-    border:1px dashed grey;
-    font-size:20px;
-    background-color:#DCE6F7;
+    position: relative;
+    font-family: raleway;
+    left: 20%;
+    text-align: justify;
 }
 
 #logout{
@@ -76,7 +76,8 @@ i{
 
 .error_msg{
     color:red;
-    font-size: 16px;font-family: raleway;
+    font-size: 16px;
+    font-family: raleway;
 }
 
 .message{
@@ -84,7 +85,22 @@ i{
     font-weight: bold;
     font-size: 28px;
     color: #6495ED;
-    left: 262px;
+    left: 35%;
     width: 500px;
     text-align: center;
+    margin-top: -1%;
+}
+
+#post_text{
+    text-align: justify;
+    position: relative;
+    width:65%;
+    left:20%;
+    font-family:raleway;
+}
+
+#welcome{
+    position: relative;
+    font-size: 28px;
+    left: 25%;
 }
