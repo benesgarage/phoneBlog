@@ -95,6 +95,7 @@ Class User_Auth extends CI_Controller
                     $session_data = array(
                         'username' => $result[0]->user_name,
                         'email' => $result[0]->user_email,
+                        'id_role' => $result[0]->id_role
                     );
 
                     $_SESSION['logged_in'] = $session_data;

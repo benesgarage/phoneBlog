@@ -67,7 +67,6 @@ sub {
 }
 
 img {
-  max-width: 100%;
   vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic;
@@ -4993,4 +4992,7 @@ a.badge:hover {
   right: 140px;
   float: right;
 }
-
+.admin_manage_btn{
+  width:75px;
+  position: relative;
+}

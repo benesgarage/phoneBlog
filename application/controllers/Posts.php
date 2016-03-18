@@ -70,4 +70,14 @@ class Posts extends CI_Controller{
     public function success($slug = NULL){
 
     }
+
+    public function hide($slug = NULL){
+        $this->post_model->hide_post($slug);
+        $this->index();
+    }
+
+    public function show($slug = NULL){
+        $this->post_model->show_post($slug);
+        $this->index();
+    }
 }

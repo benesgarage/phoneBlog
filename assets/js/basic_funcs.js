@@ -16,4 +16,16 @@ function main() {
     } else if (location.pathname.indexOf("/admin_page") != -1) {
         $("#profile_button").addClass("active");
     }
+
+    $(".admin_manage_btn").hover(function(){
+        if($(this).attr("src").indexOf('show_icon.png') > -1){
+            $(this).attr("src", function(i, old){
+                return old.replace("show_icon.png","hide_icon.png")
+            })
+        }else{
+            $(this).attr("src", function(i, old){
+                return old.replace("hide_icon.png","show_icon.png")
+            })
+        }
+    });
 }

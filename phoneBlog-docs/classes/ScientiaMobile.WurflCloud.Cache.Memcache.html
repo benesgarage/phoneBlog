@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/ScientiaMobile.html">\ScientiaMobile</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">505</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">17</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-213840363"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-213840363" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1831712111"></a>
+                                <a href="../namespaces/ScientiaMobile.html" style="margin-left: 30px; padding-left: 0">ScientiaMobile</a>
+            </div>
+            <div id="namespace-1831712111" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1315544109"></a>
+                                <a href="../namespaces/ScientiaMobile.WurflCloud.html" style="margin-left: 30px; padding-left: 0">WurflCloud</a>
+            </div>
+            <div id="namespace-1315544109" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-466119139"></a>
+                                <a href="../namespaces/ScientiaMobile.WurflCloud.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-466119139" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/ScientiaMobile.WurflCloud.Cache.CacheInterface.html">CacheInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.APC.html">APC</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.APCTest.html">APCTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.CacheTestCase.html">CacheTestCase</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.Cookie.html">Cookie</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.CookieTest.html">CookieTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.File.html">File</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.FileWithLinksTest.html">FileWithLinksTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.FileWithoutLinksTest.html">FileWithoutLinksTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html">Memcache</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcached.html">Memcached</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.MemcachedTest.html">MemcachedTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.MemcacheTest.html">MemcacheTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.MockCacheTest.html">MockCacheTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.Null.html">Null</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.NullTest.html">NullTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Cache.TestCookie.html">TestCookie</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1208341171"></a>
+                                <a href="../namespaces/ScientiaMobile.WurflCloud.HttpClient.html" style="margin-left: 30px; padding-left: 0">HttpClient</a>
+            </div>
+            <div id="namespace-1208341171" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.AbstractHttpClient.html">AbstractHttpClient</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.Curl.html">Curl</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.CurlTest.html">CurlTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.Fsock.html">Fsock</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.FsockTest.html">FsockTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.Guzzle.html">Guzzle</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.GuzzleTest.html">GuzzleTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.HttpClientTestCase.html">HttpClientTestCase</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.HttpClient.HttpException.html">HttpException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.ApiKeyException.html">ApiKeyException</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Client.html">Client</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.ClientTest.html">ClientTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.ConfigTest.html">ConfigTest</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.MockCache.html">MockCache</a></li>
+                                                    <li class="class"><a href="../classes/ScientiaMobile.WurflCloud.MockHttpClient.html">MockHttpClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/SessionHandlerInterface.html">SessionHandlerInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/CI_Benchmark.html">CI_Benchmark</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache.html">CI_Cache</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_apc.html">CI_Cache_apc</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_dummy.html">CI_Cache_dummy</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_file.html">CI_Cache_file</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_memcached.html">CI_Cache_memcached</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_redis.html">CI_Cache_redis</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cache_wincache.html">CI_Cache_wincache</a></li>
+                                                    <li class="class"><a href="../classes/CI_Calendar.html">CI_Calendar</a></li>
+                                                    <li class="class"><a href="../classes/CI_Cart.html">CI_Cart</a></li>
+                                                    <li class="class"><a href="../classes/CI_Config.html">CI_Config</a></li>
+                                                    <li class="class"><a href="../classes/CI_Controller.html">CI_Controller</a></li>
+                                                    <li class="class"><a href="../classes/CI_Controller.html">CI_Controller</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB.html">CI_DB</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_Cache.html">CI_DB_Cache</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_cubrid_driver.html">CI_DB_cubrid_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_cubrid_forge.html">CI_DB_cubrid_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_cubrid_result.html">CI_DB_cubrid_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_cubrid_utility.html">CI_DB_cubrid_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_driver.html">CI_DB_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_forge.html">CI_DB_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_ibase_driver.html">CI_DB_ibase_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_ibase_forge.html">CI_DB_ibase_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_ibase_result.html">CI_DB_ibase_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_ibase_utility.html">CI_DB_ibase_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mssql_driver.html">CI_DB_mssql_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mssql_forge.html">CI_DB_mssql_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mssql_result.html">CI_DB_mssql_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mssql_utility.html">CI_DB_mssql_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysql_driver.html">CI_DB_mysql_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysql_forge.html">CI_DB_mysql_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysql_result.html">CI_DB_mysql_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysql_utility.html">CI_DB_mysql_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysqli_driver.html">CI_DB_mysqli_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysqli_forge.html">CI_DB_mysqli_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysqli_result.html">CI_DB_mysqli_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_mysqli_utility.html">CI_DB_mysqli_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_oci8_driver.html">CI_DB_oci8_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_oci8_forge.html">CI_DB_oci8_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_oci8_result.html">CI_DB_oci8_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_oci8_utility.html">CI_DB_oci8_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_odbc_driver.html">CI_DB_odbc_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_odbc_forge.html">CI_DB_odbc_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_odbc_result.html">CI_DB_odbc_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_odbc_utility.html">CI_DB_odbc_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_4d_driver.html">CI_DB_pdo_4d_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_4d_forge.html">CI_DB_pdo_4d_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_cubrid_driver.html">CI_DB_pdo_cubrid_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_cubrid_forge.html">CI_DB_pdo_cubrid_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_dblib_driver.html">CI_DB_pdo_dblib_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_dblib_forge.html">CI_DB_pdo_dblib_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_driver.html">CI_DB_pdo_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_firebird_driver.html">CI_DB_pdo_firebird_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_firebird_forge.html">CI_DB_pdo_firebird_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_forge.html">CI_DB_pdo_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_ibm_driver.html">CI_DB_pdo_ibm_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_ibm_forge.html">CI_DB_pdo_ibm_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_informix_driver.html">CI_DB_pdo_informix_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_informix_forge.html">CI_DB_pdo_informix_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_mysql_driver.html">CI_DB_pdo_mysql_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_mysql_forge.html">CI_DB_pdo_mysql_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_oci_driver.html">CI_DB_pdo_oci_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_oci_forge.html">CI_DB_pdo_oci_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_odbc_driver.html">CI_DB_pdo_odbc_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_odbc_forge.html">CI_DB_pdo_odbc_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_pgsql_driver.html">CI_DB_pdo_pgsql_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_pgsql_forge.html">CI_DB_pdo_pgsql_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_result.html">CI_DB_pdo_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_sqlite_driver.html">CI_DB_pdo_sqlite_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_sqlite_forge.html">CI_DB_pdo_sqlite_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_sqlsrv_driver.html">CI_DB_pdo_sqlsrv_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_sqlsrv_forge.html">CI_DB_pdo_sqlsrv_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_pdo_utility.html">CI_DB_pdo_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_postgre_driver.html">CI_DB_postgre_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_postgre_forge.html">CI_DB_postgre_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_postgre_result.html">CI_DB_postgre_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_postgre_utility.html">CI_DB_postgre_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_query_builder.html">CI_DB_query_builder</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_result.html">CI_DB_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite3_driver.html">CI_DB_sqlite3_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite3_forge.html">CI_DB_sqlite3_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite3_result.html">CI_DB_sqlite3_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite3_utility.html">CI_DB_sqlite3_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite_driver.html">CI_DB_sqlite_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite_forge.html">CI_DB_sqlite_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite_result.html">CI_DB_sqlite_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlite_utility.html">CI_DB_sqlite_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlsrv_driver.html">CI_DB_sqlsrv_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlsrv_forge.html">CI_DB_sqlsrv_forge</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlsrv_result.html">CI_DB_sqlsrv_result</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_sqlsrv_utility.html">CI_DB_sqlsrv_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_DB_utility.html">CI_DB_utility</a></li>
+                                                    <li class="class"><a href="../classes/CI_Driver.html">CI_Driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Driver_Library.html">CI_Driver_Library</a></li>
+                                                    <li class="class"><a href="../classes/CI_Email.html">CI_Email</a></li>
+                                                    <li class="class"><a href="../classes/CI_Encrypt.html">CI_Encrypt</a></li>
+                                                    <li class="class"><a href="../classes/CI_Encryption.html">CI_Encryption</a></li>
+                                                    <li class="class"><a href="../classes/CI_Exceptions.html">CI_Exceptions</a></li>
+                                                    <li class="class"><a href="../classes/CI_Form_validation.html">CI_Form_validation</a></li>
+                                                    <li class="class"><a href="../classes/CI_FTP.html">CI_FTP</a></li>
+                                                    <li class="class"><a href="../classes/CI_Hooks.html">CI_Hooks</a></li>
+                                                    <li class="class"><a href="../classes/CI_Image_lib.html">CI_Image_lib</a></li>
+                                                    <li class="class"><a href="../classes/CI_Input.html">CI_Input</a></li>
+                                                    <li class="class"><a href="../classes/CI_Javascript.html">CI_Javascript</a></li>
+                                                    <li class="class"><a href="../classes/CI_Jquery.html">CI_Jquery</a></li>
+                                                    <li class="class"><a href="../classes/CI_Lang.html">CI_Lang</a></li>
+                                                    <li class="class"><a href="../classes/CI_Loader.html">CI_Loader</a></li>
+                                                    <li class="class"><a href="../classes/CI_Log.html">CI_Log</a></li>
+                                                    <li class="class"><a href="../classes/CI_Migration.html">CI_Migration</a></li>
+                                                    <li class="class"><a href="../classes/CI_Model.html">CI_Model</a></li>
+                                                    <li class="class"><a href="../classes/CI_Output.html">CI_Output</a></li>
+                                                    <li class="class"><a href="../classes/CI_Pagination.html">CI_Pagination</a></li>
+                                                    <li class="class"><a href="../classes/CI_Parser.html">CI_Parser</a></li>
+                                                    <li class="class"><a href="../classes/CI_Profiler.html">CI_Profiler</a></li>
+                                                    <li class="class"><a href="../classes/CI_Router.html">CI_Router</a></li>
+                                                    <li class="class"><a href="../classes/CI_Security.html">CI_Security</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session.html">CI_Session</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session_database_driver.html">CI_Session_database_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session_driver.html">CI_Session_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session_files_driver.html">CI_Session_files_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session_memcached_driver.html">CI_Session_memcached_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Session_redis_driver.html">CI_Session_redis_driver</a></li>
+                                                    <li class="class"><a href="../classes/CI_Table.html">CI_Table</a></li>
+                                                    <li class="class"><a href="../classes/CI_Trackback.html">CI_Trackback</a></li>
+                                                    <li class="class"><a href="../classes/CI_Typography.html">CI_Typography</a></li>
+                                                    <li class="class"><a href="../classes/CI_Unit_test.html">CI_Unit_test</a></li>
+                                                    <li class="class"><a href="../classes/CI_Upload.html">CI_Upload</a></li>
+                                                    <li class="class"><a href="../classes/CI_URI.html">CI_URI</a></li>
+                                                    <li class="class"><a href="../classes/CI_User_agent.html">CI_User_agent</a></li>
+                                                    <li class="class"><a href="../classes/CI_Utf8.html">CI_Utf8</a></li>
+                                                    <li class="class"><a href="../classes/CI_Xmlrpc.html">CI_Xmlrpc</a></li>
+                                                    <li class="class"><a href="../classes/CI_Xmlrpcs.html">CI_Xmlrpcs</a></li>
+                                                    <li class="class"><a href="../classes/CI_Zip.html">CI_Zip</a></li>
+                                                    <li class="class"><a href="../classes/Login_Database.html">Login_Database</a></li>
+                                                    <li class="class"><a href="../classes/MY_Loader.html">MY_Loader</a></li>
+                                                    <li class="class"><a href="../classes/MY_Output.html">MY_Output</a></li>
+                                                    <li class="class"><a href="../classes/MyWurfl.html">MyWurfl</a></li>
+                                                    <li class="class"><a href="../classes/Post_model.html">Post_model</a></li>
+                                                    <li class="class"><a href="../classes/Posts.html">Posts</a></li>
+                                                    <li class="class"><a href="../classes/SplClassLoader.html">SplClassLoader</a></li>
+                                                    <li class="class"><a href="../classes/User_Auth.html">User_Auth</a></li>
+                                                    <li class="class"><a href="../classes/XML_RPC_Client.html">XML_RPC_Client</a></li>
+                                                    <li class="class"><a href="../classes/XML_RPC_Message.html">XML_RPC_Message</a></li>
+                                                    <li class="class"><a href="../classes/XML_RPC_Response.html">XML_RPC_Response</a></li>
+                                                    <li class="class"><a href="../classes/XML_RPC_Values.html">XML_RPC_Values</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/ScientiaMobile.WurflCloud.Cache.html">\ScientiaMobile\WurflCloud\Cache</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\ScientiaMobile\WurflCloud\Cache</small>Memcache</h1>
+                    <p><em>The Memcache Cache Provider</em></p>
+                    <p>NOTE: PHP has two very common extensions for communicating with Memcache:
+'memcache' and 'memcached'.  Either will work, but you must use the correct
+CacheInterface class!</p>
+<p>An example of using Memcache for caching:
+<code>
+// Create Configuration object
+$config = new ScientiaMobile\WurflCloud\Config();
+// Set API Key
+$config-&gt;api_key = 'xxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+// Use Memcache Caching
+$cache = new ScientiaMobile\WurflCloud\Cache\Memcache();
+// Set the Memcache server
+$cache-&gt;addServer('localhost');
+// Create Client
+$client = new ScientiaMobile\WurflCloud\Client($config, $cache);
+</code></p>
+<p>You can also specify multiple servers with different ports and weights:
+<code>
+// Create Cache object
+$cache = new Memcache();
+// Add a local memcache server at port 11211 and weight 60
+$cache-&gt;addServer('localhost', 11211, 60);
+// Add another server with a weight of 40 - it will be used about 40% of the time
+$cache-&gt;addServer('192.168.1.10', 11211, 40);
+</code></p>
+<p>You can even use UNIX Domain Sockets:
+<code>
+// Create Cache object
+$cache = new Memcache();
+// Add server that's listing on a socket
+$cache-&gt;addServerUnixSocket('/tmp/memcache.sock');
+</code></p>
+<p>If you have unusual traffic patterns, you may want to add some randomness to your
+cache expiration, so you don't get a bunch of entries expiring at the same time:
+<code>
+// Create Cache object
+$cache = new Memcache();
+// Add up to 10 minutes (600 seconds) to the cache expiration
+$cache-&gt;cache_expiration_rand_max = 600;
+</code></p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_addServer" class="">addServer()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_addServerUnixSocket" class="">addServerUnixSocket()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_getDevice" class="">getDevice()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_getDeviceFromID" class="">getDeviceFromID()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_setDevice" class="">setDevice()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_setDeviceFromID" class="">setDeviceFromID()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_setCachePrefix" class="">setCachePrefix()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_setCacheExpiration" class="">setCacheExpiration()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_close" class="">close()</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#method_getMemcache" class="">getMemcache()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#property_cache_expiration" class="">$cache_expiration</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#property_cache_expiration_rand_max" class="">$cache_expiration_rand_max</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#property_compression" class="">$compression</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#constant_MEMCACHE_COMPRESSED" class="">MEMCACHE_COMPRESSED</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#property_memcache" class="">$memcache</a><br />
+                                                                    <a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#property_prefix" class="">$prefix</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/assets.php.src.ScientiaMobile.WurflCloud.Cache.Memcache.html"><div class="path-wrapper">assets\php\src\ScientiaMobile\WurflCloud\Cache\Memcache.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">WurflCloud\Cache</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\ScientiaMobile\WurflCloud\Cache\Memcache</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="../classes/ScientiaMobile.WurflCloud.Cache.CacheInterface.html"><div class="namespace-wrapper">\ScientiaMobile\WurflCloud\Cache\CacheInterface</div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                throws
+                            </th>
+                            <td>
+                                                                    <p>Required module does not exist</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_MEMCACHE_COMPRESSED" name="constant_MEMCACHE_COMPRESSED" class="anchor"></a>
+            <article id="constant_MEMCACHE_COMPRESSED" class="constant">
+                <h3 class="">MEMCACHE_COMPRESSED</h3>
+                <pre class="signature">MEMCACHE_COMPRESSED</pre>
+                <p><em>Memcache compression level</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_cache_expiration" name="property_cache_expiration" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$cache_expiration</h3>
+                <pre class="signature">$cache_expiration : integer</pre>
+                <p><em>Number of seconds to keep device cached in memory.  Default: 0 - forever.</em></p>
+                <p>Note: the device will eventually be pushed out of memory if the memcached
+process runs out of memory.</p>
+
+                                <h4>Type</h4>
+                integer
+                &mdash; Seconds to cache the device in memory                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_cache_expiration_rand_max" name="property_cache_expiration_rand_max" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$cache_expiration_rand_max</h3>
+                <pre class="signature">$cache_expiration_rand_max : integer</pre>
+                <p><em>Used to add randomness to the cache expiration.  If this value is 0, no
+randomness will be added, if it&#039;s above 0, a random value between 0.</em></p>
+                <p>.value
+will be added to the cache_expiration to prevent massive simultaneous expiry</p>
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_compression" name="property_compression" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$compression</h3>
+                <pre class="signature">$compression : boolean</pre>
+                <p><em>If true, data stored in memcache will be compressed</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/ScientiaMobile.WurflCloud.Cache.Memcache.html#constant_MEMCACHE_COMPRESSED"><span class="namespace-wrapper"></span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_memcache" name="property_memcache" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$memcache</h3>
+                <pre class="signature">$memcache : \Memcache</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Memcache
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_prefix" name="property_prefix" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$prefix</h3>
+                <pre class="signature">$prefix : string</pre>
+                <p><em>Memcache Key Prefix</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\Memcache  <span class="argument">$memcache = null</span>) </pre>
+                <p><em>Create a new Memcache object</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Memcache</td>
+                                <td>$memcache </td>
+                                <td><p>If included, this instance of Memcache is used instead of using an existing one</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ScientiaMobile\WurflCloud\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addServer" name="method_addServer" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addServer()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addServer(string  <span class="argument">$host</span>, integer  <span class="argument">$port = 11211</span>, integer  <span class="argument">$weight = 1</span>, boolean  <span class="argument">$persistent = true</span>) </pre>
+                <p><em>Add Memcache server</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$host </td>
+                                <td><p>Server hostname</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$port </td>
+                                <td><p>Server port number</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$weight </td>
+                                <td><p>Probability that this server will be used, relative to other added servers</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$persistent </td>
+                                <td><p>If true, use persistent connections to Memcache</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addServerUnixSocket" name="method_addServerUnixSocket" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addServerUnixSocket()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addServerUnixSocket(string  <span class="argument">$socket_path</span>, integer  <span class="argument">$weight = 1</span>, boolean  <span class="argument">$persistent = true</span>) </pre>
+                <p><em>Add Memcache server using UNIX Domain Socket</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$socket_path </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$weight </td>
+                                <td><p>Probability that this server will be used, relative to other added servers</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$persistent </td>
+                                <td><p>If true, use persistent connections to Memcache</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDevice" name="method_getDevice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDevice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDevice(  <span class="argument">$user_agent</span>) : array|boolean</pre>
+                <p><em>Get the device capabilities for the given user agent from the cache provider</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$user_agent </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array|boolean
+                                            &mdash; <p>Capabilities array or boolean false</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDeviceFromID" name="method_getDeviceFromID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDeviceFromID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDeviceFromID(  <span class="argument">$device_id</span>) : array|boolean</pre>
+                <p><em>Get the device capabilities for the given device ID from the cache provider</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$device_id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array|boolean
+                                            &mdash; <p>Capabilities array or boolean false</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDevice" name="method_setDevice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDevice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDevice(  <span class="argument">$user_agent</span>,   <span class="argument">$capabilities</span>) : boolean</pre>
+                <p><em>Stores the given user agent with the given device capabilities in the cache provider for the given time period</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$user_agent </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$capabilities </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Success</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDeviceFromID" name="method_setDeviceFromID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDeviceFromID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDeviceFromID(  <span class="argument">$device_id</span>,   <span class="argument">$capabilities</span>) : boolean</pre>
+                <p><em>Stores the given user agent with the given device capabilities in the cache provider for the given time period</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$device_id </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$capabilities </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>Success</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCachePrefix" name="method_setCachePrefix" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCachePrefix()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCachePrefix(string  <span class="argument">$prefix</span>) </pre>
+                <p><em>Sets the string that is prefixed to the keys stored in this cache provider (to prevent collisions)</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$prefix </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCacheExpiration" name="method_setCacheExpiration" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCacheExpiration()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCacheExpiration(integer  <span class="argument">$time</span>) </pre>
+                <p><em>Sets the expiration time of the cached items</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$time </td>
+                                <td><p>Expiration time in seconds</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_close" name="method_close" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">close()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">close() </pre>
+                <p><em>Closes the connection to the cache provider</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMemcache" name="method_getMemcache" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMemcache()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMemcache() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Memcache.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/assets\php\src\ScientiaMobile\WurflCloud\Cache\Memcache.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/ScientiaMobile.html">\ScientiaMobile</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 18th, 2016 at 15:19.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

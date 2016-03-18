@@ -1,0 +1,61 @@
+<?php
+$user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : -1;
+?>
+<table id="posts" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Date Posted</th>
+            <th>User</th>
+            <th>Device</th>
+            <th>View</th>
+            <?php
+                if($user_role == 1) {
+                    echo '<th>Manage</th>';
+                };?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($post as $post_item):
+            if ($post_item['hide'] == 1 and $user_role != 1) {
+                continue;
+            }else{
+                ?>
+                <tr>
+                    <td><?php echo $post_item['id_post']; ?></td>
+                    <td><?php echo $post_item['title']; ?></td>
+                    <td><?php echo $post_item['body']; ?></td>
+                    <td><?php echo $post_item['datetime']; ?></td>
+                    <td><?php
+                        foreach ($user as $user_solo):
+                            if ($user_solo['id_user'] == $post_item['id_user']) {
+                                echo $user_solo['user_name'];
+                            }
+                        endforeach; ?></td>
+                    <td><?php echo $post_item['device'] ?></td>
+                    <td>
+                        <a href="<?php echo site_url('posts/' . $post_item['slug'] . '_' . $post_item['id_post']); ?>">View
+                            post</a></td>
+                    <?php
+                        if ($user_role == 1) {
+                            echo '<td>';
+                                if($post_item['hide'] == 0) {
+                                    echo '<label style="position: relative; left: 35px;">Visible</label><a href="'
+                                        .site_url('posts/hide/' . $post_item['slug'] . '_' . $post_item['id_post']);
+                                    echo '"><img class="admin_manage_btn" src="'
+                                        . base_url('assets/images/hide_icon.png') . '"</a> </td>';
+                                    }else {
+                                    echo '<label style="position: relative; left: 35px;">Hidden</label><a href="'
+                                        .site_url('posts/show/' . $post_item['slug'] . '_' . $post_item['id_post']);
+                                    echo '"><img class="admin_manage_btn" src="'
+                                        . base_url('assets/images/show_icon.png') . '"</a> </td>';
+                                    }
+                                }
+                        } ?>
+                </tr>
+                <?php
+        endforeach; ?>
+    </tbody>
+</table>

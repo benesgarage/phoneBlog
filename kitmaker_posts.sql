@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 18, 2016 at 11:13 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 18-03-2016 a las 16:21:36
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kitmaker_posts`
+-- Base de datos: `kitmaker_posts`
 --
 CREATE DATABASE IF NOT EXISTS `kitmaker_posts` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `kitmaker_posts`;
@@ -25,7 +25,7 @@ USE `kitmaker_posts`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permission`
+-- Estructura de tabla para la tabla `permission`
 --
 
 CREATE TABLE `permission` (
@@ -36,7 +36,7 @@ CREATE TABLE `permission` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Estructura de tabla para la tabla `post`
 --
 
 CREATE TABLE `post` (
@@ -46,25 +46,26 @@ CREATE TABLE `post` (
   `datetime` datetime NOT NULL,
   `slug` varchar(100) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `device` varchar(45) DEFAULT NULL
+  `device` varchar(45) DEFAULT NULL,
+  `hide` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `post`
+-- Volcado de datos para la tabla `post`
 --
 
-INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`) VALUES
-(26, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:56:39', 'lorem-ipsum', 1, 'Chrome '),
-(27, 'Good Day', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:56:57', 'good-day', 1, 'Chrome '),
-(28, 'On my phone', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:57:43', 'on-my-phone', 1, 'Samsung SM-G900P'),
-(29, 'Hi guys, its benes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.', '2016-03-18 10:59:31', 'hi-guys-its-benes', 7, 'Apple iPhone'),
-(30, 'Damn I love posting', 'Etc this is a shorter parragraph.', '2016-03-18 11:00:04', 'damn-i-love-posting', 7, 'Apple iPhone'),
-(31, 'Lorem Ipsum', 'As you can see, to avoid getting the wrong post due to the same title as the slug of the URL, I have included the post ID as a suffix within the URL, thus avoiding the problem.', '2016-03-18 11:01:37', 'lorem-ipsum', 7, 'Apple iPhone');
+INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`, `hide`) VALUES
+(4, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.\r\n', '2016-03-18 16:13:28', 'lorem-ipsum', 1, 'Chrome ', 0),
+(5, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum tempor elit et feugiat. Duis pretium mauris et scelerisque luctus. Nam dictum pulvinar metus, non bibendum erat aliquet id. Integer accumsan et tortor sed fringilla. Mauris semper aliquam erat ac egestas. Aenean velit enim, viverra lobortis sapien ac, ullamcorper ultrices tellus. Proin consectetur sapien neque, id pharetra turpis tincidunt commodo.\r\n', '2016-03-18 16:13:47', 'lorem-ipsum', 1, 'Chrome ', 0),
+(6, 'Notice', 'Even having the same title and user whom input the post, we can see that our first two posts redirect differently, since we are using the posts unique ID from the database to reference it.', '2016-03-18 16:14:53', 'notice', 1, 'Chrome ', 0),
+(7, 'Mobile phone', 'We can also see that our application is inserting information related to the device that was used to create the post in question. Here we have a Google Nexus 5.', '2016-03-18 16:16:49', 'mobile-phone', 1, 'Google Nexus 5', 0),
+(8, 'Users', 'We can also register users so that the posts created have an author, all we have to do is register and log in. I''ve just created this post via the user benes.', '2016-03-18 16:17:59', 'users', 7, 'Google Nexus 5', 0),
+(9, 'Administrator implementation', 'As we can see here, the admin can hide our posts, so only he can see them. If we log out and look at the main page anonymously, we will not see this post.', '2016-03-18 16:19:26', 'administrator-implementation', 8, 'Google Nexus 5', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Estructura de tabla para la tabla `role`
 --
 
 CREATE TABLE `role` (
@@ -73,7 +74,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `role`
+-- Volcado de datos para la tabla `role`
 --
 
 INSERT INTO `role` (`id_role`, `role_name`) VALUES
@@ -84,7 +85,7 @@ INSERT INTO `role` (`id_role`, `role_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_has_permission`
+-- Estructura de tabla para la tabla `role_has_permission`
 --
 
 CREATE TABLE `role_has_permission` (
@@ -95,7 +96,7 @@ CREATE TABLE `role_has_permission` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Estructura de tabla para la tabla `user`
 --
 
 CREATE TABLE `user` (
@@ -107,17 +108,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_email`, `id_role`) VALUES
 (1, 'Anonymous', 'anonymous', 'anon@anon', 2),
-(7, 'benes', 'benes', 'kkarl@kitmaker.com', 3);
+(7, 'benes', 'benes', 'kkarl@kitmaker.com', 3),
+(8, 'admin', 'admin', 'admin@admin.com', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_has_permission`
+-- Estructura de tabla para la tabla `user_has_permission`
 --
 
 CREATE TABLE `user_has_permission` (
@@ -126,30 +128,30 @@ CREATE TABLE `user_has_permission` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `permission`
+-- Indices de la tabla `permission`
 --
 ALTER TABLE `permission`
   ADD PRIMARY KEY (`id_permission`);
 
 --
--- Indexes for table `post`
+-- Indices de la tabla `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id_post`),
   ADD KEY `fk_post_user1_idx` (`id_user`);
 
 --
--- Indexes for table `role`
+-- Indices de la tabla `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indexes for table `role_has_permission`
+-- Indices de la tabla `role_has_permission`
 --
 ALTER TABLE `role_has_permission`
   ADD PRIMARY KEY (`id_role`,`id_permission`),
@@ -157,14 +159,14 @@ ALTER TABLE `role_has_permission`
   ADD KEY `fk_role_has_permission_role_idx` (`id_role`);
 
 --
--- Indexes for table `user`
+-- Indices de la tabla `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `fk_user_role1_idx` (`id_role`);
 
 --
--- Indexes for table `user_has_permission`
+-- Indices de la tabla `user_has_permission`
 --
 ALTER TABLE `user_has_permission`
   ADD PRIMARY KEY (`id_user`,`id_permission`),
@@ -172,54 +174,54 @@ ALTER TABLE `user_has_permission`
   ADD KEY `fk_user_has_permission_user1_idx` (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `permission`
+-- AUTO_INCREMENT de la tabla `permission`
 --
 ALTER TABLE `permission`
   MODIFY `id_permission` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT de la tabla `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `post`
+-- Filtros para la tabla `post`
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `fk_post_user1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `role_has_permission`
+-- Filtros para la tabla `role_has_permission`
 --
 ALTER TABLE `role_has_permission`
   ADD CONSTRAINT `fk_role_has_permission_permission1` FOREIGN KEY (`id_permission`) REFERENCES `permission` (`id_permission`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_role_has_permission_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `user`
+-- Filtros para la tabla `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `fk_user_role1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `user_has_permission`
+-- Filtros para la tabla `user_has_permission`
 --
 ALTER TABLE `user_has_permission`
   ADD CONSTRAINT `fk_user_has_permission_permission1` FOREIGN KEY (`id_permission`) REFERENCES `permission` (`id_permission`) ON DELETE NO ACTION ON UPDATE NO ACTION,

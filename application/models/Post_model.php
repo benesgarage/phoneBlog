@@ -62,4 +62,26 @@ class Post_model extends CI_Model{
 
         return $this->db->insert('post', $data);
     }
+
+    public function hide_post($slug = NULL){
+        if($slug == NULL){
+            die('Unknown post');
+        }else{
+            $id_pos = strpos($slug, '_');
+            $id_post = substr($slug, $id_pos+1);
+            $slug = substr($slug,0,$id_pos);
+            $this->db->query('UPDATE post SET hide=\'1\' WHERE id_post='.$id_post.';');
+        }
+    }
+
+    public function show_post($slug = NULL){
+        if($slug == NULL){
+            die('Unknown post');
+        }else{
+            $id_pos = strpos($slug, '_');
+            $id_post = substr($slug, $id_pos+1);
+            $slug = substr($slug,0,$id_pos);
+            $this->db->query('UPDATE post SET hide=\'0\' WHERE id_post='.$id_post.';');
+        }
+    }
 }
