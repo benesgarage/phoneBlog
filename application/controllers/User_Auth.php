@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../../assets/php/MyWurfl.php';
+include_once __DIR__.'/../third_party/WURFL/MyWurfl.php';
 Class User_Auth extends CI_Controller
 {
     public function __construct()

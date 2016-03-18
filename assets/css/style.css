@@ -81,14 +81,15 @@ i{
 }
 
 .message{
-    position: absolute;
+    position: relative;
+
     font-weight: bold;
     font-size: 28px;
     color: #6495ED;
-    left: 35%;
-    width: 500px;
+    left:40%;
+    width: 175px;
     text-align: center;
-    margin-top: -1%;
+    margin-top: 5%;
 }
 
 #post_text{
