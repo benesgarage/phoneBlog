@@ -31,14 +31,15 @@ Class User_Auth extends CI_Controller
      *
      * This function will display the log in page via multiple views.
      *
+     * @param null $data
      */
-    public function index()
+    public function index($data = NULL)
     {
 
         /*VIEWS LOADED*/
 
         $this->load->view('templates/header');
-        $this->load->view('user_auth/login_form');                                                //Our login form view.
+        $this->load->view('user_auth/login_form', $data);                                         //Our login form view.
         $this->load->view('templates/footer');
     }
 
