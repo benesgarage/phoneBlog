@@ -8,7 +8,7 @@ Class Login_Database extends CI_Model                       //Model in charge of
     }
 
 
-    public function registration_insert($data)  //This will be called incase of a new user registration.
+    public function registration_insert($data)  //This will be called in case of a new user registration.
     {
 
         $condition = "user_name =" . "'" . $data['user_name'] . "'";

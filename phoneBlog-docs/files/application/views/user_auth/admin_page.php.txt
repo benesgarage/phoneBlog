@@ -1,8 +1,11 @@
 <?php
-if (isset($this->session->userdata['logged_in'])) {
-    $username = ($this->session->userdata['logged_in']['username']);
-    $email = ($this->session->userdata['logged_in']['email']);
-} else {
+$user_info = isset($_SESSION['logged_in']) ? $_SESSION['logged_in'] : -1;   //if user is logged, pass user data to variable
+
+if ($user_info != -1) {                                                     //if variable has acquired user data
+    $username = ($user_info['username']);
+    $email = ($user_info['email']);
+} else {                                                                    //otherwise redirect to login page
+    header("location:".base_url()."user_auth/logout");
 }
 ?>
 <div id="profile">

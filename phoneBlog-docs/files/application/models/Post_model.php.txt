@@ -1,27 +1,30 @@
 <?php
-class Post_model extends CI_Model{
+class Post_model extends CI_Model{              //Model in charge of posts.
     public function __construct()
+
     {
         $this->load->database();
     }
 
-    public function get_post($slug = FALSE){
+    public function get_post($slug = FALSE){    //This will be called when we want to retrieve one or all posts.
 
-        if ($slug === FALSE){
+        if ($slug === FALSE){       //If the slug parameter defaults to false, we return all posts.
 
             $query = $this->db->get('post');
             return $query->result_array();
         }
-        $id_pos = strpos($slug, '_');
-        $id_post = substr($slug, $id_pos+1);
-        $slug = substr($slug,0,$id_pos);
-        $query = $this->db->get_where('post',array('slug' => $slug, 'id_post' => $id_post));
-        return $query->row_array();
+        /*Otherwise, we use the data provided by the parameter and find the one post referenced in the db*/
+
+        $id_pos = strpos($slug, '_');   //Our post ID is prefixed by a "_" in the slug
+        $id_post = substr($slug, $id_pos+1);    //We acquire the substring pertaining to the post ID
+        $slug = substr($slug,0,$id_pos);    //And we acquire the original slug, which corresponds to the post title.
+        $query = $this->db->get_where('post',array('slug' => $slug, 'id_post' => $id_post));    //Do the query.
+        return $query->row_array();     //Return the query.
     }
 
-    public function get_user($id_user = FALSE){
+    public function get_user($id_user = FALSE){     //This will be called when we want to retrieve one or all users.
 
-        if ($id_user === FALSE){
+        if ($id_user === FALSE){        //If the user ID defaults to false return all users.
 
             $query = $this->db->get('user');
             return $query->result_array();

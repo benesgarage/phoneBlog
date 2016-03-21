@@ -42,15 +42,15 @@ $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] :
                         if ($user_role == 1) {
                             echo '<td>';
                                 if($post_item['hide'] == 0) {
-                                    echo '<label style="position: relative; left: 35px;">Visible</label><a href="'
+                                    echo '<label style="position: relative; left: 15px;">Visible</label><a href="'
                                         .site_url('posts/hide/' . $post_item['slug'] . '_' . $post_item['id_post']);
                                     echo '"><img class="admin_manage_btn" src="'
-                                        . base_url('assets/images/hide_icon.png') . '"</a> </td>';
+                                        . base_url('assets/images/show_icon.png') . '"</a> </td>';
                                     }else {
-                                    echo '<label style="position: relative; left: 35px;">Hidden</label><a href="'
+                                    echo '<label style="position: relative; left: 15px;">Hidden</label><a href="'
                                         .site_url('posts/show/' . $post_item['slug'] . '_' . $post_item['id_post']);
                                     echo '"><img class="admin_manage_btn" src="'
-                                        . base_url('assets/images/show_icon.png') . '"</a> </td>';
+                                        . base_url('assets/images/hide_icon.png') . '"</a> </td>';
                                     }
                                 }
                         } ?>

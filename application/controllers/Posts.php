@@ -7,7 +7,7 @@ class Posts extends CI_Controller{              //This class will control models
     {
         parent::__construct();
 
-        $this->load->model('post_model');   //Load models that our controller will reference.
+        $this->load->model('post_model');   //Load the model that our controller will reference.
 
         $this->load->helper('url_helper');  //Aid in the manipulation of URL.
 
