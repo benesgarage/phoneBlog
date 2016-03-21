@@ -48,7 +48,7 @@ $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] :
                                         . base_url('assets/images/show_icon.png') . '"</a> </td>';
                                     }else {
                                     echo '<label style="position: relative; left: 15px;">Hidden</label><a href="'
-                                        .site_url('posts/show/' . $post_item['slug'] . '_' . $post_item['id_post']);
+                                        .site_url('posts/hide/' . $post_item['slug'] . '_' . $post_item['id_post']);
                                     echo '"><img class="admin_manage_btn" src="'
                                         . base_url('assets/images/hide_icon.png') . '"</a> </td>';
                                     }
