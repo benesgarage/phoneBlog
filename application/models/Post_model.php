@@ -45,7 +45,7 @@ class Post_model extends CI_Model{
         $this->load->helper('url');
         if (isset($_SESSION['logged_in'])){
             $query = $this->db->get_where('user', array('user_name' => $_SESSION['logged_in']['username']));
-            if ($query->num_rows() > 0){
+            if ($query->num_rows() == 1){
                 $query_data = $query->row_array();
                 $user = $query_data['id_user'];
             }
@@ -53,7 +53,7 @@ class Post_model extends CI_Model{
                 die('No record of logged user within the database.');
             }
         }else {
-            $user = 1;
+            $user = anonymous_user;
         }
 
         $slug = url_title($this->input->post('title'), 'dash', TRUE);

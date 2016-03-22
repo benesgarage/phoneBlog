@@ -1,6 +1,4 @@
 <?php
-
-include_once __DIR__.'/../third_party/WURFL/MyWurfl.php';
 /**
  * This class will control models and views related to user data.
  *
@@ -16,11 +14,7 @@ Class User_Auth extends CI_Controller
 
         $this->load->helper('form');                                                 //Aid in the manipulation of forms.
 
-        $this->load->helper('url');                                                    //Aid in the manipulation of URL.
-
         $this->load->library('form_validation');                                                       //Validate forms.
-
-        $this->load->library('session');                                             //Gain access to session variables.
 
         $this->load->model('user_auth/login_database');             //Load the model that our controller will reference.
 

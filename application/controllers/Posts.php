@@ -1,7 +1,4 @@
 <?php
-
-include_once __DIR__.'/../third_party/WURFL/MyWurfl.php';
-
 /**
  * This class will control models and views related to posts.
  *
@@ -16,10 +13,6 @@ class Posts extends CI_Controller{
         $this->load->model('post_model');                          //Load the models that our controller will reference.
 
         $this->load->model('user_auth/login_database');
-
-        $this->load->helper('url_helper');                                             //Aid in the manipulation of URL.
-
-        $this->load->library('session');                                             //Gain access to session variables.
 
         $this->output->set_template('default');                                         //Visual template for our views.
     }

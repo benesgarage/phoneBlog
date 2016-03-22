@@ -1,5 +1,5 @@
 <?php
-$user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : Anonymous;
+$user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : anonymous;
 ?>
 <table id="posts" class="display" cellspacing="0" width="100%">
     <thead>
@@ -12,14 +12,14 @@ $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] :
             <th>Device</th>
             <th>View</th>
             <?php
-                if($user_role == Administrator) {
+                if($user_role == administrator) {
                     echo '<th>Manage</th>';
                 };?>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($post as $post_item):
-            if ($post_item['hide'] == TRUE and $user_role != Administrator) {
+            if ($post_item['hide'] == TRUE and $user_role != administrator) {
                 continue;
             }else{
                 ?>
@@ -39,7 +39,7 @@ $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] :
                         <a href="<?php echo site_url('posts/' . $post_item['slug'] . '_' . $post_item['id_post']); ?>">View
                             post</a></td>
                     <?php
-                        if ($user_role == 1) {
+                        if ($user_role == administrator) {
                             echo '<td>';
                                 if($post_item['hide'] == FALSE) {
                                     echo '<label style="position: relative; left: 15px;">Visible</label><a href="'

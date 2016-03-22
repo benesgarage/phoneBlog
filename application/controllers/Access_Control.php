@@ -1,7 +1,5 @@
 <?php
 
-include_once __DIR__.'/../third_party/WURFL/MyWurfl.php';
-
 class Access_Control extends CI_Controller{
 
     public function __construct()
@@ -9,10 +7,6 @@ class Access_Control extends CI_Controller{
         parent::__construct();
 
         $this->load->helper('db_array');
-
-        $this->load->library('session');
-
-        $this->load->helper('url');
 
         $this->load->model('user_auth/login_database');
 
@@ -22,7 +16,7 @@ class Access_Control extends CI_Controller{
     public function index()
     {
         $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : Anonymous;
-        if($user_role != Anonymous){
+        if($user_role != anonymous){
 
             $role_perms =
                 $this->permission_database->read_db($_SESSION['logged_in']['id_role'],'role_has_permission','id_role');

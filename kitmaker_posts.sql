@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2016 at 03:49 PM
+-- Generation Time: Mar 22, 2016 at 04:26 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -63,6 +63,14 @@ CREATE TABLE `post` (
   `hide` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`, `hide`) VALUES
+(1, 'fgfshrtshrts', 'retretert', '2016-03-22 16:07:21', 'fgfshrtshrts', 8, 'Chrome ', 0),
+(2, 'fdabboai', 'qeewiuhewrfiu\r\n', '2016-03-22 16:12:09', 'fdabboai', 1, 'Chrome ', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -79,8 +87,8 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id_role`, `role_name`) VALUES
-(1, 'Administrator'),
-(2, 'Anonymous'),
+(2, 'Administrator'),
+(1, 'Anonymous'),
 (3, 'Standard');
 
 -- --------------------------------------------------------
@@ -102,11 +110,11 @@ CREATE TABLE `role_has_permission` (
 --
 
 INSERT INTO `role_has_permission` (`id_roleperm`, `id_role`, `id_permission`, `value`, `add_date`) VALUES
-(1, 1, 1, 1, '2016-03-22 08:42:02'),
-(2, 1, 2, 1, '2016-03-22 08:42:02'),
+(1, 1, 1, 0, '2016-03-22 08:42:02'),
+(2, 1, 2, 0, '2016-03-22 08:42:02'),
 (3, 1, 3, 1, '2016-03-22 08:42:02'),
-(4, 2, 1, 0, '2016-03-22 08:42:02'),
-(5, 2, 2, 0, '2016-03-22 08:42:02'),
+(4, 2, 1, 1, '2016-03-22 08:42:02'),
+(5, 2, 2, 1, '2016-03-22 08:42:02'),
 (6, 2, 3, 1, '2016-03-22 08:42:02'),
 (7, 3, 1, 1, '2016-03-22 08:43:01'),
 (8, 3, 2, 0, '2016-03-22 08:43:01'),
@@ -131,9 +139,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_email`, `id_role`) VALUES
-(1, 'Anonymous', 'anonymous', 'anon@anon', 2),
+(1, 'Anonymous', 'anonymous', 'anon@anon', 1),
 (7, 'boss', '$2y$12$yz.Ah7TynhWtF6QRJSTeHO.zdOSxYCY/JXNWzynCSiXD99X57LeeO', 'boss@boss.com', 3),
-(8, 'admin', '$2y$12$TAvCKj4pXO1RPK4H8lkj0udgCXnXyKfkcGphyLsbz51DzbrqtWkBW', 'admin@admin.com', 1);
+(8, 'admin', '$2y$12$TAvCKj4pXO1RPK4H8lkj0udgCXnXyKfkcGphyLsbz51DzbrqtWkBW', 'admin@admin.com', 2);
 
 -- --------------------------------------------------------
 
@@ -209,7 +217,7 @@ ALTER TABLE `permission`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `role`
 --
