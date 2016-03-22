@@ -126,7 +126,6 @@ public function new_user_registration()
             $user_data =
                 $this->login_database->read_user_information($this->input->post('username'));  //Get apparent user data.
 
-
             if (
             password_verify(
                 $this->input->post('password'),
@@ -135,6 +134,7 @@ public function new_user_registration()
 
                 $session_data = array(
                     'username' => $user_data[0]->user_name,
+                    'uid' => $user_data[0]->id_user,
                     'email' => $user_data[0]->user_email,
                     'id_role' => $user_data[0]->id_role
                 );

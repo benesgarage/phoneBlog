@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2016 at 11:32 AM
+-- Generation Time: Mar 22, 2016 at 03:49 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -30,18 +30,21 @@ USE `kitmaker_posts`;
 
 CREATE TABLE `permission` (
   `id_permission` int(11) NOT NULL,
-  `permission_name` varchar(75) NOT NULL,
-  `permission_key` varchar(75) NOT NULL
+  `permission_name` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `permission`
 --
 
-INSERT INTO `permission` (`id_permission`, `permission_name`, `permission_key`) VALUES
-(1, 'Access Site', 'access_site'),
-(2, 'Access Admin System', 'access_admin'),
-(3, 'Publish Posts', 'publish_posts');
+INSERT INTO `permission` (`id_permission`, `permission_name`) VALUES
+(1, 'Access Site'),
+(2, 'Access Admin System'),
+(3, 'Publish Posts'),
+(5, 'CRUD Users'),
+(6, 'CRUD Roles'),
+(7, 'CRUD Permissions'),
+(8, 'CRUD Posts');
 
 -- --------------------------------------------------------
 
@@ -143,7 +146,7 @@ CREATE TABLE `user_has_permission` (
   `id_user` int(11) NOT NULL,
   `id_permission` int(11) NOT NULL,
   `value` tinyint(1) NOT NULL DEFAULT '0',
-  `add_date` datetime NOT NULL
+  `add_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -154,8 +157,7 @@ CREATE TABLE `user_has_permission` (
 -- Indexes for table `permission`
 --
 ALTER TABLE `permission`
-  ADD PRIMARY KEY (`id_permission`),
-  ADD UNIQUE KEY `permission_key_UNIQUE` (`permission_key`);
+  ADD PRIMARY KEY (`id_permission`);
 
 --
 -- Indexes for table `post`
@@ -202,7 +204,7 @@ ALTER TABLE `user_has_permission`
 -- AUTO_INCREMENT for table `permission`
 --
 ALTER TABLE `permission`
-  MODIFY `id_permission` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_permission` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `post`
 --
@@ -227,7 +229,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_has_permission`
 --
 ALTER TABLE `user_has_permission`
-  MODIFY `id_userperm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_userperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

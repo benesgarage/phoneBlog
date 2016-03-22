@@ -8,6 +8,8 @@ class Access_Control extends CI_Controller{
     {
         parent::__construct();
 
+        $this->load->helper('db_array');
+
         $this->load->library('session');
 
         $this->load->helper('url');
@@ -19,31 +21,28 @@ class Access_Control extends CI_Controller{
 
     public function index()
     {
-        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : 2;
-        if($user_role != 2){
-            $perms = array();
-            $perm_names = array();
+        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : Anonymous;
+        if($user_role != Anonymous){
 
-            $role_perms = $this->permission_database->read_role_perms($_SESSION['logged_in']['id_role']);
+            $role_perms =
+                $this->permission_database->read_db($_SESSION['logged_in']['id_role'],'role_has_permission','id_role');
+            $perms = singular_array_transform($role_perms,"id_permission","value");
 
-            foreach ($role_perms as $role_perms_entry){
-                $perms[$role_perms_entry["id_permission"]] = $role_perms_entry["value"];
-            }
-            $user_perms = $this->permission_database->read_user_perms($_SESSION['logged_in']['username']);
-            foreach ($user_perms as $user_perms_entry){
-                $perms[$user_perms_entry["id_permission"]] = $user_perms_entry["value"];
-            }
-            $perm_names_array = $this->permission_database->read_perms();
-            foreach ($perm_names_array as $perm_name){
-                $perm_names[$perm_name["id_permission"]] = $perm_name["permission_name"];
-            }
-            $role_name = $this->permission_database->read_roles($user_role);
+            $user_perms =
+                $this->permission_database->read_db($_SESSION['logged_in']['uid'],'user_has_permission','id_user');
+            $perms = $perms + singular_array_transform($user_perms,"id_permission","value");
+
+            $perm_names_array = $this->permission_database->read_db(FALSE,'permission');
+            $perm_names = singular_array_transform($perm_names_array,"id_permission","permission_name");
+
+            $role_name = $this->permission_database->read_db($user_role,'role','id_role');
+
+
 
             $data = array(
                 'perm_names'=> $perm_names,
                 'perms' => $perms,
-                'role_name' => $role_name[0]["role_name"]
-
+                'role_name' => $role_name[0]["role_name"],
                 );
 
             $this->load->view('database/header');
@@ -52,5 +51,9 @@ class Access_Control extends CI_Controller{
         }else{
             redirect('/User_Auth/index');
         }
+    }
+
+    public function users(){
+
     }
 }
