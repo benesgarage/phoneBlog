@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2016 at 12:53 PM
+-- Generation Time: Mar 22, 2016 at 11:32 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -30,8 +30,18 @@ USE `kitmaker_posts`;
 
 CREATE TABLE `permission` (
   `id_permission` int(11) NOT NULL,
-  `permission_name` varchar(45) NOT NULL
+  `permission_name` varchar(75) NOT NULL,
+  `permission_key` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `permission`
+--
+
+INSERT INTO `permission` (`id_permission`, `permission_name`, `permission_key`) VALUES
+(1, 'Access Site', 'access_site'),
+(2, 'Access Admin System', 'access_admin'),
+(3, 'Publish Posts', 'publish_posts');
 
 -- --------------------------------------------------------
 
@@ -50,14 +60,6 @@ CREATE TABLE `post` (
   `hide` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`, `hide`) VALUES
-(8, 'fewfewrfew', 'retewrew', '2016-03-21 12:26:29', 'fewfewrfew', 1, 'Chrome ', 1),
-(9, 'fdferfrewr', 'ewrwerfewrf', '2016-03-21 12:26:59', 'fdferfrewr', 7, 'Chrome ', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -66,7 +68,7 @@ INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `
 
 CREATE TABLE `role` (
   `id_role` int(11) NOT NULL,
-  `role_name` varchar(45) NOT NULL
+  `role_name` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -85,9 +87,27 @@ INSERT INTO `role` (`id_role`, `role_name`) VALUES
 --
 
 CREATE TABLE `role_has_permission` (
+  `id_roleperm` int(11) NOT NULL,
   `id_role` int(11) NOT NULL,
-  `id_permission` int(11) NOT NULL
+  `id_permission` int(11) NOT NULL,
+  `value` tinyint(1) NOT NULL DEFAULT '0',
+  `add_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `role_has_permission`
+--
+
+INSERT INTO `role_has_permission` (`id_roleperm`, `id_role`, `id_permission`, `value`, `add_date`) VALUES
+(1, 1, 1, 1, '2016-03-22 08:42:02'),
+(2, 1, 2, 1, '2016-03-22 08:42:02'),
+(3, 1, 3, 1, '2016-03-22 08:42:02'),
+(4, 2, 1, 0, '2016-03-22 08:42:02'),
+(5, 2, 2, 0, '2016-03-22 08:42:02'),
+(6, 2, 3, 1, '2016-03-22 08:42:02'),
+(7, 3, 1, 1, '2016-03-22 08:43:01'),
+(8, 3, 2, 0, '2016-03-22 08:43:01'),
+(9, 3, 3, 1, '2016-03-22 08:43:01');
 
 -- --------------------------------------------------------
 
@@ -119,8 +139,11 @@ INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_email`, `id_r
 --
 
 CREATE TABLE `user_has_permission` (
+  `id_userperm` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_permission` int(11) NOT NULL
+  `id_permission` int(11) NOT NULL,
+  `value` tinyint(1) NOT NULL DEFAULT '0',
+  `add_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -131,7 +154,8 @@ CREATE TABLE `user_has_permission` (
 -- Indexes for table `permission`
 --
 ALTER TABLE `permission`
-  ADD PRIMARY KEY (`id_permission`);
+  ADD PRIMARY KEY (`id_permission`),
+  ADD UNIQUE KEY `permission_key_UNIQUE` (`permission_key`);
 
 --
 -- Indexes for table `post`
@@ -144,13 +168,14 @@ ALTER TABLE `post`
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
-  ADD PRIMARY KEY (`id_role`);
+  ADD PRIMARY KEY (`id_role`),
+  ADD UNIQUE KEY `role_name_UNIQUE` (`role_name`);
 
 --
 -- Indexes for table `role_has_permission`
 --
 ALTER TABLE `role_has_permission`
-  ADD PRIMARY KEY (`id_role`,`id_permission`),
+  ADD PRIMARY KEY (`id_roleperm`),
   ADD KEY `fk_role_has_permission_permission1_idx` (`id_permission`),
   ADD KEY `fk_role_has_permission_role_idx` (`id_role`);
 
@@ -165,7 +190,7 @@ ALTER TABLE `user`
 -- Indexes for table `user_has_permission`
 --
 ALTER TABLE `user_has_permission`
-  ADD PRIMARY KEY (`id_user`,`id_permission`),
+  ADD PRIMARY KEY (`id_userperm`),
   ADD KEY `fk_user_has_permission_permission1_idx` (`id_permission`),
   ADD KEY `fk_user_has_permission_user1_idx` (`id_user`);
 
@@ -177,22 +202,32 @@ ALTER TABLE `user_has_permission`
 -- AUTO_INCREMENT for table `permission`
 --
 ALTER TABLE `permission`
-  MODIFY `id_permission` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permission` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `role_has_permission`
+--
+ALTER TABLE `role_has_permission`
+  MODIFY `id_roleperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `user_has_permission`
+--
+ALTER TABLE `user_has_permission`
+  MODIFY `id_userperm` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
