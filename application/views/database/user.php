@@ -4,21 +4,29 @@
         <hr>
         <h3>Role: <?php echo $_SESSION['logged_in']['role_name']?></h3>
         <hr>
-        <h3><?php echo $object_title ?></h3><br>
-        <?php echo form_open('access_control/user_edit/'.$slug); ?>
-        <div class="form_item"><span>Role:</span>
-            <select name="role" class="role_dropdown">
-                <?php
-                foreach ($role_names as $rid => $name){
-                    echo '<option';
-                    if($managed_user_data['id_role'] == $rid){
-                        echo ' selected=selected';
+        <h3><?php echo $manage_message ?></h3><hr>
+        <?php echo form_open('access_control/'.$method.'/'.$slug); ?>
+        <?php
+        if(isset($role_names)) {
+            ?>
+            <br>
+            <div class="form_item">
+                <span>Role:</span>
+                <select name="role" class="role_dropdown">
+                    <?php
+                    foreach ($role_names as $rid => $name) {
+                        echo '<option';
+                        if ($managed_user_data['id_role'] == $rid) {
+                            echo ' selected=selected';
+                        }
+                        echo ' value="' . $rid . '">' . $name . '</option>';
                     }
-                    echo ' value="'.$rid.'">'.$name.'</option>';
-                }
-                ?>
-            </select>
-        </div>
+                    ?>
+                </select>
+            </div>
+            <?php
+        }
+        ?>
         <h4>Permissions:</h4>
         <ul class="perm_list">
             <?php
@@ -41,7 +49,15 @@
             ?>
         </ul>
         <div style="clear: both"></div>
-        <input class="submit_button" type="submit" value=" Confirm changes " name="submit"/><br />
+        <input class="submit_button" type="submit" value=" Confirm changes " name="submit"/>
+        <?php
+        if (isset($confirm_message)) {
+        echo "<div class='confirm_message'>";
+            echo $confirm_message;
+            echo "</div>";
+        }
+        ?>
+        <br />
         <?php echo form_close(); ?>
 
     </div>

@@ -100,6 +100,7 @@ h3{
     flex-direction: column;
     max-width: 90%;
     width: 40%;
+    margin-top: auto;
 }
 
 .perm_element, .user_element, .role_element{
@@ -113,6 +114,7 @@ h3{
 
 .submit_button{
     float: left;
+    margin-left: 39px;
 }
 
 .form_item{

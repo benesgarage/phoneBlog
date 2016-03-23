@@ -18,7 +18,6 @@ Class Permission_database extends CI_Model{
             if($this->db->affected_rows() == 1){
                 return TRUE;
             }
-            return FALSE;
         }
         return FALSE;
     }
@@ -45,6 +44,33 @@ Class Permission_database extends CI_Model{
             $condition = "id_user =" . "'" . $id_user . "' and id_permission =" . "'" . $id_permission . "'";
             $this->db->where($condition);
             if($this->db->delete('user_has_permission')){
+                return TRUE;
+            }
+        }return FALSE;
+    }
+
+    public function modify_role_permissions($id_role = FALSE, $id_permission = FALSE , $value = NULL)
+    {
+        if($id_role != FALSE and $id_permission != FALSE and $value != NULL){
+
+            $sql = 'INSERT INTO role_has_permission (id_roleperm, id_role, id_permission, value)
+                VALUES ( \' \', '.$id_role.', '.$id_permission.', '.$value.')
+                ON DUPLICATE KEY UPDATE
+                value='.$value;
+
+            $query = $this->db->query($sql);
+            return $query;
+        }
+        return FALSE;
+    }
+
+    public function delete_role_permissions($id_role = FALSE, $id_permission = FALSE)
+    {
+        if($id_role != FALSE and $id_permission != FALSE)
+        {
+            $condition = "id_role =" . "'" . $id_role . "' and id_permission =" . "'" . $id_permission . "'";
+            $this->db->where($condition);
+            if($this->db->delete('role_has_permission')){
                 return TRUE;
             }
         }return FALSE;

@@ -182,7 +182,8 @@ class Access_Control extends CI_Controller{
                 );
 
                 $data = array(
-                    'object_title' => "Managing " . $user_name,
+                    'method' => 'user_edit',
+                    'manage_message' => 'Managing: '.$user_name,
                     'perm_names' => $perm_names,
                     'role_names' => $role_names,
                     'perms' => $perms,
@@ -198,4 +199,66 @@ class Access_Control extends CI_Controller{
         }
 
     }
+
+    public function role_edit($slug = NULL){
+
+        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : anonymous;
+        if($user_role != anonymous) {
+
+            $id_pos = strpos($slug, '_');
+            $id_role = substr($slug, $id_pos + 1);
+            $role_name = substr($slug, 0, $id_pos);
+
+            if($this->input->post('submit') == TRUE){
+
+                $form_data = $this->input->post();
+                unset($form_data['submit']);
+
+                foreach($form_data as $perm_id => $value){
+                    if($value == ''){
+                        echo 'Nothing has changed.';
+                    }
+                    if($value == -1){
+                        if($this->permission_database->delete_role_permissions($id_role, $perm_id) == TRUE){
+                            echo ' Permission Deleted! ';
+                        }
+                        continue;
+                    }
+                    if($this->permission_database->modify_role_permissions($id_role, $perm_id, $value) == TRUE){
+                        echo ' Permission Changed! ';
+                    }
+                }
+                redirect('/access_control/role_edit/'.$slug);
+            }else {
+
+                $perm_array = $this->login_database->read_db(FALSE, 'permission');
+                $perm_names = singular_array_transform($perm_array, "id_permission", "permission_name");
+
+                $role_perms =
+                    $this->login_database->read_db($id_role, 'role_has_permission', 'id_role');
+                $perms = singular_array_transform($role_perms, "id_permission", "value");
+
+                $perm_functions = array(
+                    1 => 'Enable',
+                    0 => 'Disable',
+                    -1 => 'Inherit'
+                );
+
+                $data = array(
+                    'method' => 'role_edit',
+                    'manage_message' => 'Managing role: ' . $role_name,
+                    'perm_names' => $perm_names,
+                    'perms' => $perms,
+                    'slug' => $slug,
+                    'functions' => $perm_functions,
+                );
+
+                $this->load->view('database/header');
+                $this->load->view('database/user', $data);
+                $this->load->view('database/footer');
+            }
+        }
+    }
+
+
 }
