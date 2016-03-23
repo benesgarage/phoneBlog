@@ -56,12 +56,12 @@ class Access_Control extends CI_Controller{
 
             $title = 'Select a user to manage:';
 
-            $element = 'user_edit';
+            $method = 'user_edit';
 
             $data = array(
                 'object_title' => $title,
                 'names' => $user_names,
-                'element' => $element,
+                'method' => $method,
             );
 
             $this->load->view('database/header');
@@ -82,12 +82,12 @@ class Access_Control extends CI_Controller{
 
             $title = 'Select a role to manage:';
 
-            $element = 'role_edit';
+            $method = 'role_edit';
 
             $data = array(
                 'object_title' => $title,
                 'names' => $role_names,
-                'element' => $element
+                'method' => $method
             );
 
             $this->load->view('database/header');
@@ -106,14 +106,14 @@ class Access_Control extends CI_Controller{
             $perm_array = $this->login_database->read_db(FALSE,'permission');
             $perm_names = singular_array_transform($perm_array,"id_permission","permission_name");
 
-            $title = 'Select a permission to manage:';
+            $title = 'Select a permission to disable en masse:';
 
-            $element = 'permission_edit';
+            $method = 'permission_edit';
 
             $data = array(
                 'object_title' => $title,
                 'names' => $perm_names,
-                'element' => $element
+                'method' => $method
             );
 
             $this->load->view('database/header');
@@ -257,6 +257,20 @@ class Access_Control extends CI_Controller{
                 $this->load->view('database/user', $data);
                 $this->load->view('database/footer');
             }
+        }
+    }
+
+    public function permission_edit($slug = NULL){
+        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : anonymous;
+        if($user_role != anonymous){
+
+            $id_pos = strpos($slug, '_');
+            $id_role = substr($slug, $id_pos + 1);
+            $role_name = substr($slug, 0, $id_pos);
+
+            //modify_all_permissions()
+            //return success
+
         }
     }
 

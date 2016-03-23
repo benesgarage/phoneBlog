@@ -9,9 +9,14 @@
             <?php
             foreach($names as $id => $name){
                 echo '<li class="user_element">'.$name.'<a href="';
-                echo site_url('/access_control').'/'.$element.'/'.$name.'_'.$id;
+                echo site_url('/access_control').'/'.$method.'/'.$name.'_'.$id;
                 echo '"><img class="user_img" src="';
-                echo base_url('assets/images/edit.png');
+                echo base_url('assets/images');
+                if($element == 'permission_edit'){
+                    echo '/delete.png';
+                }else{
+                    echo '/edit.png';
+                }
                 echo '"></a></li>';
             }
             ?>
