@@ -25,7 +25,7 @@ class Posts extends CI_Controller{
         /*DATA GATHERING*/
 
         $data['post'] = $this->post_model->get_post();                                              //Acquire all posts.
-        $data['user'] = $this->login_database->read_user_information();                             //Acquire all users.
+        $data['user'] = $this->login_database->read_db(FALSE,'user');                               //Acquire all users.
 
         /*VIEWS LOADED*/
 

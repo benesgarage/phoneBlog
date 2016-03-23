@@ -12,6 +12,6 @@
             <a href="<?php echo base_url('/access_control');?>"><li>Home</li></a>
             <a href="<?php echo base_url('/access_control/users');?>"><li>Users</li></a>
             <a href="<?php echo base_url('/access_control/roles');?>"><li>Roles</li></a>
-            <a href="<?php echo base_url('/access_control/perms');?>"><li>Permissions</li></a>
+            <a href="<?php echo base_url('/access_control/permissions');?>"><li>Permissions</li></a>
         </ul>
     </div>

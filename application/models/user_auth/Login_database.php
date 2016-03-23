@@ -37,34 +37,22 @@ Class Login_Database extends CI_Model
             return false;                                                             //Otherwise, reject the insertion.
         }
     }
-    /**
-     * This will be called when we need to request user info from the db.
-     *
-     * The function can accept multiple parameters, type int and type string.
-     * the method recognises strings as the username, and integers as user IDs.
-     *
-     * @param bool $user_id
-     * @return bool
-     */
-    public function read_user_information($user_id = FALSE) {
-        if(is_string($user_id)) {
-            $condition = "user_name =" . "'" . $user_id . "'";
-        }elseif(is_int($user_id)) {
-            $condition = "id_user =" . "'" . $user_id . "'";
-        }elseif($user_id === FALSE){
-            $query = $this->db->get('user');
-            return $query->result_array();
-        }
-            $this->db->select('*');
-            $this->db->from('user');
-            $this->db->where($condition);
-            $this->db->limit(1);
-            $query = $this->db->get();
 
-        if ($query->num_rows() == 1) {                                            //On successful query return the data.
-            return $query->result();
-        } else {
-            return false;                                                                      //Otherwise return false.
+    public function read_db($id = FALSE, $table, $id_reference = NULL, $column = '*'){
+
+        if($id != FALSE) {
+
+            $condition = $id_reference." =" . "'" . $id . "'";
+            $this->db->select($column);
+            $this->db->from($table);
+            $this->db->where($condition);
+            $query = $this->db->get();
+            return $query->result_array();
+
+        }elseif($id === FALSE){
+
+            $query = $this->db->get($table);
+            return $query->result_array();
         }
     }
 

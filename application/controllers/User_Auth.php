@@ -117,20 +117,21 @@ public function new_user_registration()
                 $this->load->view('templates/footer');
             }
         } else {                                      //If form validation succeeds, we gather user input from the form.
-            $user_data =
-                $this->login_database->read_user_information($this->input->post('username'));  //Get apparent user data.
-
+                $user_data =
+                    $this->login_database->read_db($this->input->post('username'),'user','user_name');  //Get user data.
             if (
             password_verify(
                 $this->input->post('password'),
-                $user_data[0]->user_password
+                $user_data[0]['user_password']
             )) {                                                             //If the password matches, fetch user data.
+                $role_name = $this->login_database->read_db($user_data[0]['id_role'],'role','id_role','role_name');
 
                 $session_data = array(
-                    'username' => $user_data[0]->user_name,
-                    'uid' => $user_data[0]->id_user,
-                    'email' => $user_data[0]->user_email,
-                    'id_role' => $user_data[0]->id_role
+                    'username' => $user_data[0]['user_name'],
+                    'uid' => $user_data[0]['id_user'],
+                    'email' => $user_data[0]['user_email'],
+                    'id_role' => $user_data[0]['id_role'],
+                    'role_name' => $role_name[0]['role_name']
                 );
 
                 $_SESSION['logged_in'] = $session_data;
