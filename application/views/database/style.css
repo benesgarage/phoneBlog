@@ -99,10 +99,27 @@ h3{
     display: inline-flex;
     flex-direction: column;
     max-width: 90%;
-    width: 100%;
+    width: 40%;
 }
 
 .perm_element, .user_element, .role_element{
     width: 100%;
     margin-bottom: 2px;
+}
+
+.role_dropdown,.perm_dropdown{
+    float: right;
+}
+
+.submit_button{
+    float: left;
+}
+
+.form_item{
+    margin-left: 40px;
+    width:40%;
+}
+
+.form_item,.perm_list{
+    min-width: 220px;
 }

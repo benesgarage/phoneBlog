@@ -9,6 +9,12 @@ class Access_Control extends CI_Controller{
         $this->load->helper('db_array');
 
         $this->load->model('user_auth/login_database');
+
+        $this->load->helper('form');
+
+        $this->load->library('form_validation');
+
+        $this->load->model('permission_database');
     }
 
     public function index()
@@ -48,12 +54,18 @@ class Access_Control extends CI_Controller{
             $user_array = $this->login_database->read_db(FALSE,'user');
             $user_names = singular_array_transform($user_array,"id_user","user_name");
 
+            $title = 'Select a user to manage:';
+
+            $element = 'user_edit';
+
             $data = array(
-                'user_names' => $user_names
+                'object_title' => $title,
+                'names' => $user_names,
+                'element' => $element,
             );
 
             $this->load->view('database/header');
-            $this->load->view('database/users', $data);
+            $this->load->view('database/element', $data);
             $this->load->view('database/footer');
         }else{
             redirect('/User_Auth/index');
@@ -68,12 +80,18 @@ class Access_Control extends CI_Controller{
             $role_array = $this->login_database->read_db(FALSE,'role');
             $role_names = singular_array_transform($role_array,"id_role","role_name");
 
+            $title = 'Select a role to manage:';
+
+            $element = 'role_edit';
+
             $data = array(
-                'role_names' => $role_names
+                'object_title' => $title,
+                'names' => $role_names,
+                'element' => $element
             );
 
             $this->load->view('database/header');
-            $this->load->view('database/roles', $data);
+            $this->load->view('database/element', $data);
             $this->load->view('database/footer');
         }else{
             redirect('/User_Auth/index');
@@ -88,15 +106,96 @@ class Access_Control extends CI_Controller{
             $perm_array = $this->login_database->read_db(FALSE,'permission');
             $perm_names = singular_array_transform($perm_array,"id_permission","permission_name");
 
+            $title = 'Select a permission to manage:';
+
+            $element = 'permission_edit';
+
             $data = array(
-                'perm_names' => $perm_names
+                'object_title' => $title,
+                'names' => $perm_names,
+                'element' => $element
             );
 
             $this->load->view('database/header');
-            $this->load->view('database/permissions', $data);
+            $this->load->view('database/element', $data);
             $this->load->view('database/footer');
         }else{
             redirect('/User_Auth/index');
         }
+    }
+
+    public function user_edit($slug = NULL)
+    {
+        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : anonymous;
+        if($user_role != anonymous){
+
+            $id_pos = strpos($slug, '_');
+            $id_user = substr($slug, $id_pos + 1);
+            $user_name = substr($slug, 0, $id_pos);
+
+            if ($this->input->post('submit') == TRUE) {
+
+                $form_data = $this->input->post();
+                unset($form_data['submit']);
+
+                if($this->permission_database->modify_user_role($id_user, $form_data['role']) == TRUE){
+                    echo 'Role Modified!';
+                }
+                unset($form_data['role']);
+
+                foreach($form_data as $perm_id => $value){
+                    if($value == ''){
+                        echo 'Nothing has changed.';
+                    }
+                    if($value == -1){
+                        if($this->permission_database->delete_user_permissions($id_user, $perm_id) == TRUE){
+                            echo ' Permission Deleted! ';
+                        }
+                        continue;
+                    }
+                    if($this->permission_database->modify_user_permissions($id_user, $perm_id, $value) == TRUE){
+                        echo ' Permission Changed! ';
+                    }
+                }
+
+                redirect('/access_control/user_edit/'.$slug);
+
+            }else{
+
+                $role_array = $this->login_database->read_db(FALSE, 'role');
+                $role_names = singular_array_transform($role_array, "id_role", "role_name");
+
+                $perm_array = $this->login_database->read_db(FALSE, 'permission');
+                $perm_names = singular_array_transform($perm_array, "id_permission", "permission_name");
+
+                $user_perms =
+                    $this->login_database->read_db($id_user, 'user_has_permission', 'id_user');
+                $perms = singular_array_transform($user_perms, "id_permission", "value");
+
+                $managed_user_data =
+                    $this->login_database->read_db($id_user,'user','id_user');
+
+                $perm_functions = array(
+                    1 => 'Enable',
+                    0 => 'Disable',
+                    -1 => 'Inherit'
+                );
+
+                $data = array(
+                    'object_title' => "Managing " . $user_name,
+                    'perm_names' => $perm_names,
+                    'role_names' => $role_names,
+                    'perms' => $perms,
+                    'slug' => $slug,
+                    'functions' => $perm_functions,
+                    'managed_user_data' => $managed_user_data[0]
+                );
+
+                $this->load->view('database/header');
+                $this->load->view('database/user', $data);
+                $this->load->view('database/footer');
+            }
+        }
+
     }
 }
