@@ -20,7 +20,7 @@ if ($user_info != -1) {                                                     //if
     echo "<br/>";
     echo "<p>Your Email is " . $_SESSION['logged_in']['email']."</p>";
     echo "<br/>";
-    echo "<p>You our navigating our page via " .$_SESSION['brand_name']." ".$_SESSION['model_name']."</p>";
+    echo "<p>You are navigating our page via " .$_SESSION['brand_name']." ".$_SESSION['model_name']."</p>";
     ?>
 </div>
 <br/>

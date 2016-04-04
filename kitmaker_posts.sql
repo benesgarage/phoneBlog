@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2016 at 04:26 PM
+-- Generation Time: Apr 04, 2016 at 09:39 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -69,7 +69,8 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`id_post`, `title`, `body`, `datetime`, `slug`, `id_user`, `device`, `hide`) VALUES
 (1, 'fgfshrtshrts', 'retretert', '2016-03-22 16:07:21', 'fgfshrtshrts', 8, 'Chrome ', 0),
-(2, 'fdabboai', 'qeewiuhewrfiu\r\n', '2016-03-22 16:12:09', 'fdabboai', 1, 'Chrome ', 0);
+(2, 'fdabboai', 'qeewiuhewrfiu\r\n', '2016-03-22 16:12:09', 'fdabboai', 1, 'Chrome ', 0),
+(3, 'Yo', 'this is a post', '2016-04-04 09:35:04', 'yo', 1, 'Chrome ', 0);
 
 -- --------------------------------------------------------
 
@@ -118,7 +119,10 @@ INSERT INTO `role_has_permission` (`id_roleperm`, `id_role`, `id_permission`, `v
 (6, 2, 3, 1, '2016-03-22 08:42:02'),
 (7, 3, 1, 1, '2016-03-22 08:43:01'),
 (8, 3, 2, 0, '2016-03-22 08:43:01'),
-(9, 3, 3, 1, '2016-03-22 08:43:01');
+(9, 3, 3, 1, '2016-03-22 08:43:01'),
+(10, 1, 5, 1, '2016-03-23 15:06:13'),
+(11, 1, 7, 1, '2016-03-23 15:06:13'),
+(12, 1, 8, 1, '2016-03-23 15:06:13');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `user_name`, `user_password`, `user_email`, `id_role`) VALUES
 (1, 'Anonymous', 'anonymous', 'anon@anon', 1),
 (7, 'boss', '$2y$12$yz.Ah7TynhWtF6QRJSTeHO.zdOSxYCY/JXNWzynCSiXD99X57LeeO', 'boss@boss.com', 3),
-(8, 'admin', '$2y$12$TAvCKj4pXO1RPK4H8lkj0udgCXnXyKfkcGphyLsbz51DzbrqtWkBW', 'admin@admin.com', 2);
+(8, 'admin', '$2y$12$TAvCKj4pXO1RPK4H8lkj0udgCXnXyKfkcGphyLsbz51DzbrqtWkBW', 'admin@admin.com', 2),
+(9, 'john', '$2y$12$eToalZ11kWbpi.CzWWc2We0cD86pHqqbFU6x.gyMK0D5XfOLP0z1S', 'john@potato.com', 3);
 
 -- --------------------------------------------------------
 
@@ -156,6 +161,16 @@ CREATE TABLE `user_has_permission` (
   `value` tinyint(1) NOT NULL DEFAULT '0',
   `add_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_has_permission`
+--
+
+INSERT INTO `user_has_permission` (`id_userperm`, `id_user`, `id_permission`, `value`, `add_date`) VALUES
+(19, 8, 5, 1, '2016-03-23 14:16:48'),
+(20, 8, 6, 1, '2016-03-23 14:16:48'),
+(21, 8, 7, 1, '2016-03-23 14:16:48'),
+(22, 8, 8, 1, '2016-03-23 14:16:48');
 
 --
 -- Indexes for dumped tables
@@ -217,7 +232,7 @@ ALTER TABLE `permission`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `role`
 --
@@ -227,17 +242,17 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `role_has_permission`
 --
 ALTER TABLE `role_has_permission`
-  MODIFY `id_roleperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_roleperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `user_has_permission`
 --
 ALTER TABLE `user_has_permission`
-  MODIFY `id_userperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_userperm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Constraints for dumped tables
 --
