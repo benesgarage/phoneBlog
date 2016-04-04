@@ -259,20 +259,4 @@ class Access_Control extends CI_Controller{
             }
         }
     }
-
-    public function permission_edit($slug = NULL){
-        $user_role = isset($_SESSION['logged_in']) ? $_SESSION['logged_in']['id_role'] : anonymous;
-        if($user_role != anonymous){
-
-            $id_pos = strpos($slug, '_');
-            $id_role = substr($slug, $id_pos + 1);
-            $role_name = substr($slug, 0, $id_pos);
-
-            //modify_all_permissions()
-            //return success
-
-        }
-    }
-
-
 }

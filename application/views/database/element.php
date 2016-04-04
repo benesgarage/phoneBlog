@@ -12,7 +12,7 @@
                 echo site_url('/access_control').'/'.$method.'/'.$name.'_'.$id;
                 echo '"><img class="user_img" src="';
                 echo base_url('assets/images');
-                if($element == 'permission_edit'){
+                if($method == 'permission_edit'){
                     echo '/delete.png';
                 }else{
                     echo '/edit.png';
